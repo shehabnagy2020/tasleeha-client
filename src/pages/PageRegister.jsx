@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginIMG from "../assets/images/login-pic.jpg";
 
 const PageRegister = () => {
+  const [info, setInfo] = useState({
+    email: "",
+    password: "",
+    full_name: "",
+    phone_number: "",
+  });
+  const handleChange = (e) => {
+    let { id, value } = e.target;
+    setInfo({ ...info, [id]: value });
+  };
+
   return (
     <div className="w-screen h-screen relative overflow-hidden flex justify-center items-center">
       <img
@@ -19,8 +30,11 @@ const PageRegister = () => {
             <input
               type="text"
               name=""
-              id=""
-              className="border-b-2 bg-transparent text-white border-white py-3 w-56 md:w-72"
+              id="full_name"
+              required
+              onChange={handleChange}
+              value={info.full_name}
+              className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
               placeholder="Full Name"
             />
           </div>
@@ -28,8 +42,11 @@ const PageRegister = () => {
             <input
               type="email"
               name=""
-              id=""
-              className="border-b-2 bg-transparent text-white border-white py-3 w-56 md:w-72"
+              id="email"
+              required
+              onChange={handleChange}
+              value={info.email}
+              className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
               placeholder="Email"
             />
           </div>
@@ -37,8 +54,11 @@ const PageRegister = () => {
             <input
               type="password"
               name=""
-              id=""
-              className="border-b-2 bg-transparent text-white border-white py-3 w-56 md:w-72"
+              id="password"
+              required
+              onChange={handleChange}
+              value={info.password}
+              className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
               placeholder="Password"
             />
           </div>
@@ -46,8 +66,11 @@ const PageRegister = () => {
             <input
               type="tel"
               name=""
-              id=""
-              className="border-b-2 bg-transparent text-white border-white py-3 w-56 md:w-72"
+              id="phone_number"
+              required
+              onChange={handleChange}
+              value={info.phone_number}
+              className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
               placeholder="Phone Number"
             />
           </div>
@@ -55,7 +78,7 @@ const PageRegister = () => {
             type="submit"
             className="rounded-lg bg-green-500 text-white px-10 py-3 font-bold text-lg mb-5"
           >
-            Login
+            Register
           </button>
           <span className="text-white font-bold text-lg capitalize">
             have an account?{" "}

@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginIMG from "../assets/images/login-pic.jpg";
 
 const PageLogin = () => {
+  const [info, setInfo] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    let { id, value } = e.target;
+    setInfo({ ...info, [id]: value });
+  };
+
   return (
     <div className="w-screen h-screen relative overflow-hidden flex justify-center items-center">
       <img
@@ -19,8 +28,11 @@ const PageLogin = () => {
             <input
               type="email"
               name=""
-              id=""
-              className="border-b-2 bg-transparent text-white border-white py-3 w-56 md:w-72"
+              id="email"
+              required
+              onChange={handleChange}
+              value={info.email}
+              className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
               placeholder="Email"
             />
           </div>
@@ -28,8 +40,11 @@ const PageLogin = () => {
             <input
               type="password"
               name=""
-              id=""
-              className="border-b-2 bg-transparent text-white border-white py-3 w-56 md:w-72"
+              id="password"
+              required
+              onChange={handleChange}
+              value={info.password}
+              className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
               placeholder="Password"
             />
           </div>
