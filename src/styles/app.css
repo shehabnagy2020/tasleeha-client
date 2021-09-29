@@ -1,0 +1,17 @@
+.scale-img {
+  overflow: hidden;
+}
+.scale-img img {
+  transition: 0.3s all ease-in-out;
+}
+.scale-img:hover img {
+  transform: scale(1.2);
+}
+
+.dropdown-toggle:hover .dropdown-menu {
+  display: flex;
+}
+.dropdown-menu {
+  transition: 0.3s all;
+  display: none;
+}
