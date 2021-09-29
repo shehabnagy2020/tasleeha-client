@@ -84,20 +84,23 @@ const PageCategory = () => {
   ]);
 
   useEffect(() => {
-    let newList = [...itemsList];
-    if (sortType === 0) {
-      newList = sortBy(newList, ["name", "price"]);
-    } else if (sortType === 1) {
-      newList = sortBy(newList, ["name", "price"]);
-      newList = reverse(newList);
-    } else if (sortType === 2) {
-      newList = sortBy(newList, ["price", "name"]);
-    } else {
-      newList = sortBy(newList, ["price", "name"]);
-      newList = reverse(newList);
+    if (itemsList && itemsList.length >= 1) {
+      let newList = [...itemsList];
+      if (sortType === 0) {
+        newList = sortBy(newList, ["name", "price"]);
+      } else if (sortType === 1) {
+        newList = sortBy(newList, ["name", "price"]);
+        newList = reverse(newList);
+      } else if (sortType === 2) {
+        newList = sortBy(newList, ["price", "name"]);
+      } else {
+        newList = sortBy(newList, ["price", "name"]);
+        newList = reverse(newList);
+      }
+      setItemsList([...newList]);
     }
-    setItemsList([...newList]);
-  }, [sortType]);
+  }, [sortType, itemsList]);
+
   return (
     <div className="">
       <div className="container mx-auto lg:px-20">

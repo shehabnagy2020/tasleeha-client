@@ -9,14 +9,14 @@ const SectionDetails = ({
 }) => {
   return (
     <div className="">
-      <div className="py-8 flex flex-col gap-y-8 items-center justify-center">
-        <p className="text-base font-medium text-gray-900 w-full md:w-10/12 lg:w-8/12 mx-auto">
+      <div className="py-5 flex flex-col items-center justify-center">
+        <p className="text-base font-medium mb-5 text-gray-900 w-full md:w-10/12 lg:w-8/12 mx-auto">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi harum
           esse consequatur officiis laudantium fuga iure, delectus voluptate
           voluptates eos veritatis! Adipisci, obcaecati? Praesentium officiis,
           libero quas ipsa iusto commodi.
         </p>
-        <div className="flex justify-between items-center w-full flex-col md:flex-row gap-y-3 md:gap-y-0">
+        <div className="flex justify-between mb-5 items-center w-full flex-col md:flex-row gap-y-3 md:gap-y-0">
           <div className="md:flex gap-x-3 items-center justify-start hidden">
             <button
               onClick={() => setViewType(1)}
@@ -86,6 +86,7 @@ const SectionDetails = ({
             </button>
           </div>
         </div>
+        <div className="w-full bg-gray-500" style={{ height: "1px" }}></div>
       </div>
     </div>
   );

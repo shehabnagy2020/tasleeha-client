@@ -52,7 +52,11 @@ const SectionCategories = () => {
         <div className="cats-container overflow-hidden w-4/5 mx-auto">
           <div className="swiper-wrapper">
             {cats.map((item) => (
-              <div className="swiper-slide" key={item.id}>
+              <a
+                href={`/category/${item.id}`}
+                className="swiper-slide"
+                key={item.id}
+              >
                 <div
                   className="flex items-center justify-center gap-y-2 flex-col"
                   id={item.id}
@@ -70,7 +74,7 @@ const SectionCategories = () => {
                     </span>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>

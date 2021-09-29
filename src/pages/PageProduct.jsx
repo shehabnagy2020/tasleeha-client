@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SectionInfo from "../components/PageProduct/SectionInfo";
@@ -13,7 +13,7 @@ const PageProduct = () => {
     text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
     price: 50,
   };
-  const [itemsList, setItemsList] = useState([
+  const [itemsList] = useState([
     {
       id: 1,
       img: ItemIMG,

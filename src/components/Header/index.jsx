@@ -5,9 +5,9 @@ const Header = () => {
   return (
     <div className="pt-7">
       <div className="flex justify-between items-center">
-        <div className="">
+        <a href="/" className="">
           <img src={LogoIMG} alt="" className="" />
-        </div>
+        </a>
         <div className="flex items-center gap-x-2">
           <div className="px-3 py-3 flex justify-center items-center text-white bg-blue-500 rounded-full">
             <span className="material-icons">shopping_cart</span>
