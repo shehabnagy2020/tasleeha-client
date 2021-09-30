@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const SectionAccount = () => {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged] = useState(false);
 
   return (
     <a

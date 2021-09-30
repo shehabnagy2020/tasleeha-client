@@ -6,8 +6,6 @@ import SectionCart from "./SectionCart";
 import SectionSearch from "./SectionSearch";
 
 const Header = () => {
-  const [searchData, setSearchData] = useState("");
-
   return (
     <div className="pt-7">
       <div className="flex justify-between items-center px-10">
