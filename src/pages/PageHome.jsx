@@ -8,13 +8,13 @@ import SectionCategories from "../components/PageHome/SectionCategories";
 const PageHome = () => {
   return (
     <div className="">
+      <Header />
       <div className="container mx-auto lg:px-20">
-        <Header />
         <SectionCarousel />
         <SectionBanners />
         <SectionCategories />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

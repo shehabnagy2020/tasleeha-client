@@ -3,10 +3,10 @@ import React from "react";
 const Footer = () => {
   return (
     <div className="">
-      <div className="px-10 py-4 bg-gray-500">
+      <div className="px-10 py-4 border-t">
         <div className="flex items-center justify-center">
-          <span className="text-white font-bold text-sm capitalize">
-            company © all rights reserved {new Date().getFullYear()}
+          <span className="text-gray-400 font-bold text-sm capitalize">
+            sovio © all rights reserved {new Date().getFullYear()}
           </span>
         </div>
       </div>
