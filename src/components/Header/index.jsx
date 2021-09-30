@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import LogoIMG from "../../assets/images/logo.jpg";
 import SectionAccount from "./SectionAccount";
 import SectionBottom from "./SectionBottom";
