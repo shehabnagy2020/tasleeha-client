@@ -1,48 +1,64 @@
 import React from "react";
-import ProductIMG from "../../assets/images/tableImage.jpg";
 
-const SectionProductsTable = () => {
-  let cartItems = [1, 2, 3];
+const SectionProductsTable = ({
+  cartItems,
+  handleIncreaseQty,
+  handleDecreaseQty,
+  handleDelete,
+}) => {
   return (
     <div className="w-full">
       <table className="w-full">
-        <thead className="capitalize text-gray-500 border-b text-sm">
+        <thead className="capitalize text-gray-500 border-b text-xs lg:text-sm">
           <tr className="text-left">
-            <th className="pb-2 w-20 h-20"></th>
-            <th className="pb-2 w-6/12">product</th>
-            <th className="pb-2">price</th>
-            <th className="pb-2">quantity</th>
-            <th className="pb-2">subtotal</th>
-            <th className="pb-2 w-5"></th>
+            <th className="p-2 w-20 h-20 hidden md:flex"></th>
+            <th className="p-2 w-5/12 md:w-6/12">product</th>
+            <th className="p-2">price</th>
+            <th className="p-2">quantity</th>
+            <th className="p-2">subtotal</th>
+            <th className="p-2 w-5"></th>
           </tr>
         </thead>
         <tbody className="">
-          {cartItems.map((item, index) => (
+          {cartItems.items.map((item, index) => (
             <tr
               className={`${index < cartItems.length - 1 ? "border-b" : ""}`}
-              key={item}
+              key={item.id}
             >
-              <td className="py-2">
-                <img src={ProductIMG} alt="" className="w-16 h-16" />
+              <td className="p-2 hidden md:flex">
+                <img src={item.img} alt="" className="w-16 h-16" />
               </td>
-              <td className="py-2 text-sm lg:text-base">
-                All Natural Italian-Style Chicken Meatballs
+              <td className="p-2 text-sm lg:text-base">{item.name}</td>
+              <td className="p-2 font-medium text-gray-400 text-base">
+                ${item.price}
               </td>
-              <td className="py-2 font-medium text-gray-400 text-base">$20</td>
-              <td className="py-2">
+              <td className="p-2">
                 <div className="flex items-center gap-x-2">
-                  <button className="bg-gray-200 text-gray-600 rounded-full flex justify-center items-center w-7 h-7">
-                    <i className="material-icons text-base">add</i>
+                  <button
+                    onClick={(_) => handleIncreaseQty(index)}
+                    className="bg-gray-200 text-gray-600 rounded-full flex justify-center items-center w-5 h-5 md:w-7 md:h-7"
+                  >
+                    <i className="material-icons text-sm md:text-base">add</i>
                   </button>
-                  <span className="text-gray-800 text-base">1</span>
-                  <button className="bg-gray-200 text-gray-600 rounded-full flex justify-center items-center w-7 h-7">
+                  <span className="text-gray-800 text-base">
+                    {item.quantity}
+                  </span>
+                  <button
+                    onClick={(_) => handleDecreaseQty(index)}
+                    className="bg-gray-200 text-gray-600 rounded-full flex justify-center items-center w-5 h-5 md:w-7 md:h-7"
+                  >
                     <i className="material-icons text-base">remove</i>
                   </button>
                 </div>
               </td>
-              <td className="py-2 font-medium text-gray-400 text-base">$40</td>
-              <td className="py-2">
-                <button className="text-red-500 flex justify-center items-center">
+              <td className="p-2 font-medium text-gray-400 text-base">
+                ${item.quantity * item.price}
+              </td>
+              <td className="p-2">
+                <button
+                  onClick={(_) => handleDelete(index)}
+                  className="text-red-500 flex justify-center items-center"
+                >
                   <i className="material-icons text-base lg:text-xl">close</i>
                 </button>
               </td>

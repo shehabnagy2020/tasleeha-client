@@ -1,6 +1,6 @@
 import React from "react";
 
-const SectionTotals = () => {
+const SectionTotals = ({ cartItems = {}, handleLocation }) => {
   return (
     <div className="">
       <div className="border p-3">
@@ -9,7 +9,9 @@ const SectionTotals = () => {
         <div className="py-3 gap-y-3 flex flex-col">
           <div className="flex items-center justify-between">
             <span className="text-sm capitalize font-semibold">subtotal</span>
-            <span className="text-sm font-semibold text-gray-500">$20</span>
+            <span className="text-sm font-semibold text-gray-500">
+              ${cartItems.total}
+            </span>
           </div>
 
           <div className="flex flex-col w-full">
@@ -17,13 +19,20 @@ const SectionTotals = () => {
               <span className="text-sm capitalize font-semibold">
                 shipping:
               </span>
-              <span className="text-sm font-semibold text-gray-500">$20</span>
+              <span className="text-sm font-semibold text-gray-500">
+                ${cartItems?.shipping?.price}
+              </span>
             </div>
-            <div className="flex w-full">
-              <span className="text-sm capitalize font-semibold">my home</span>
-              {/* <button className="text-blue-500 mx-3">
-                <i className="material-icons">location</i>
-              </button> */}
+            <div className="flex w-full mt-2">
+              <span className="text-sm capitalize font-semibold">
+                {cartItems?.shipping?.address}
+              </span>
+              <button
+                onClick={handleLocation}
+                className="bg-blue-500 text-white rounded-full w-6 h-6 mx-2 flex justify-center items-center"
+              >
+                <i className="material-icons text-sm">location_on</i>
+              </button>
             </div>
           </div>
 
@@ -31,7 +40,9 @@ const SectionTotals = () => {
 
           <div className="flex items-center justify-between">
             <span className="capitalize font-semibold text-xl">total</span>
-            <span className="font-semibold text-gray-500 text-xl">$20</span>
+            <span className="font-semibold text-gray-500 text-xl">
+              ${cartItems.total + cartItems.shipping.price}
+            </span>
           </div>
 
           <div className="w-full bg-gray-400" style={{ height: "1px" }}></div>

@@ -2,7 +2,7 @@ import React from "react";
 
 const SectionCart = () => {
   return (
-    <div className="flex items-center flex-shrink-0">
+    <a href="/cart" className="flex items-center flex-shrink-0">
       <div className="hidden md:flex mr-1">
         <span className="text-sm text-gray-400 font-bold capitalize">
           0.00 $
@@ -18,7 +18,7 @@ const SectionCart = () => {
           <span className="material-icons">shopping_cart</span>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
