@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import HelperContext from "../../contexts/HelperContext";
 
 const SectionInfo = ({ itemData }) => {
+  let { handleAddCart } = useContext(HelperContext);
+
   return (
     <div className="pb-10">
       <div className="flex gap-y-8 items-center flex-col lg:flex-row lg:gap-x-10 lg:gap-y-0">
@@ -17,7 +20,10 @@ const SectionInfo = ({ itemData }) => {
           <span className="text-blue-500 font-bold text-2xl">
             {itemData.price} $
           </span>
-          <button className="rounded-lg text-white  capitalize bg-blue-500 border py-3 px-6">
+          <button
+            onClick={(_) => handleAddCart(itemData)}
+            className="rounded-lg text-white  capitalize bg-blue-500 border py-3 px-6"
+          >
             add to cart
           </button>
         </div>

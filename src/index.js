@@ -7,11 +7,14 @@ import "./styles/app.css";
 import App from "./App.jsx";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
+import MainContext from "./contexts/Index";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <MainContext>
+        <App />
+      </MainContext>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

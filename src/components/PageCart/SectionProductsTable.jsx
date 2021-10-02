@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import HelperContext from "../../contexts/HelperContext";
 
-const SectionProductsTable = ({
-  cartItems,
-  handleIncreaseQty,
-  handleDecreaseQty,
-  handleDelete,
-}) => {
+const SectionProductsTable = () => {
+  let { cartItems, handleDecreaseQty, handleDelete, handleIncreaseQty } =
+    useContext(HelperContext);
+
   return (
     <div className="w-full">
       <table className="w-full">

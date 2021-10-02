@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import HelperContext from "../../contexts/HelperContext";
 
-const SectionTotals = ({ cartItems = {}, handleLocation }) => {
+const SectionTotals = () => {
+  let { cartItems, handleLocation } = useContext(HelperContext);
   return (
     <div className="">
       <div className="border p-3">
