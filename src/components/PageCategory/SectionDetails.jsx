@@ -9,7 +9,7 @@ const SectionDetails = ({
 }) => {
   return (
     <div className="">
-      <div className="py-5 flex flex-col items-center justify-center">
+      <div className="pb-5 flex flex-col items-center justify-center">
         <p className="text-base font-medium mb-5 text-gray-900 w-full md:w-10/12 lg:w-8/12 mx-auto">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi harum
           esse consequatur officiis laudantium fuga iure, delectus voluptate

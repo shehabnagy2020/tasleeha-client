@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import SectionPagintation from "../components/PageCategory/SectionPagintation";
+import SectionPagintation from "../components/Common/SectionPagintation";
 import Footer from "../components/Footer";
 import SectionDetails from "../components/PageCategory/SectionDetails";
 import SectionItemsList from "../components/PageCategory/SectionItemsList";
 import ItemIMG from "../assets/images/item.jpg";
 import { sortBy, reverse } from "lodash";
+import { useParams } from "react-router-dom";
 
 const PageCategory = () => {
   const [sortType, setSortType] = useState(0);
   const [viewType, setViewType] = useState(1);
+  const { category_id } = useParams();
   const [itemsList, setItemsList] = useState([
     {
       id: 1,
@@ -105,7 +107,14 @@ const PageCategory = () => {
     <div className="">
       <div className="container mx-auto lg:px-20">
         <Header />
-        <SectionPagintation />
+        <SectionPagintation
+          title={category_id}
+          path={[
+            { name: "home", link: "/" },
+            { name: "/" },
+            { name: category_id },
+          ]}
+        />
         <SectionDetails
           viewType={viewType}
           setViewType={setViewType}

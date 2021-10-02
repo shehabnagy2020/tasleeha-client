@@ -4,8 +4,12 @@ import Footer from "../components/Footer";
 import SectionInfo from "../components/PageProduct/SectionInfo";
 import ItemIMG from "../assets/images/item.jpg";
 import SectionSimilarPro from "../components/PageProduct/SectionSimilarPro";
+import SectionPagintation from "../components/Common/SectionPagintation";
+import { useParams } from "react-router-dom";
 
 const PageProduct = () => {
+  const { product_id } = useParams();
+
   const itemData = {
     id: 1,
     img: ItemIMG,
@@ -90,6 +94,16 @@ const PageProduct = () => {
     <div className="">
       <div className="container mx-auto lg:px-20">
         <Header />
+        <SectionPagintation
+          title={product_id}
+          path={[
+            { name: "home", link: "/" },
+            { name: "/" },
+            { name: "some-category", link: `/category/some-category` },
+            { name: "/" },
+            { name: product_id },
+          ]}
+        />
         <SectionInfo itemData={itemData} />
         <SectionSimilarPro itemsList={itemsList} />
         <Footer />
