@@ -50,7 +50,7 @@ const PageLogin = () => {
           </div>
           <button
             type="submit"
-            className="rounded-lg bg-green-500 text-white px-10 py-3 font-bold text-lg mb-5"
+            className="rounded-lg bg-blue-500 text-white px-10 py-3 font-bold text-lg mb-5"
           >
             Login
           </button>

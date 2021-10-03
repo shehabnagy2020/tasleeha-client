@@ -5,6 +5,7 @@ import PageHome from "./pages/PageHome";
 import PageLogin from "./pages/PageLogin";
 import PageProduct from "./pages/PageProduct";
 import PageRegister from "./pages/PageRegister";
+import PageUser from "./pages/PageUser";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/product/:product_id" component={PageProduct} />
       <Route path="/login" component={PageLogin} />
       <Route path="/register" component={PageRegister} />
+      <Route path="/user" component={PageUser} />
       <Route path="/" component={PageHome} />
       <Redirect to="/" />
     </Switch>

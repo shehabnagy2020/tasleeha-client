@@ -61,7 +61,7 @@ const SectionCategories = () => {
                   className="flex items-center justify-center gap-y-2 flex-col"
                   id={item.id}
                 >
-                  <div className="rounded-full bg-blue-500 p-5">
+                  <div className="rounded-full bg-white border p-3">
                     <img
                       src={item.img}
                       alt=""

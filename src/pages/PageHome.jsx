@@ -7,9 +7,9 @@ import SectionCategories from "../components/PageHome/SectionCategories";
 
 const PageHome = () => {
   return (
-    <div className="">
+    <div className="w-screen h-screen overflow-x-hidden">
       <Header />
-      <div className="container mx-auto lg:px-20">
+      <div className="container mx-auto pt-5 lg:px-20">
         <SectionCarousel />
         <SectionBanners />
         <SectionCategories />

@@ -6,8 +6,10 @@ const SectionTotals = () => {
   return (
     <div className="">
       <div className="border p-3">
-        <h3 className="mb-3 uppercase text-lg font-bold">cart totals</h3>
-        <div className="w-full bg-gray-400" style={{ height: "1px" }}></div>
+        <h3 className="border-b pb-2 mb-3 uppercase text-lg font-bold">
+          cart totals
+        </h3>
+
         <div className="py-3 gap-y-3 flex flex-col">
           <div className="flex items-center justify-between">
             <span className="text-sm capitalize font-semibold">subtotal</span>
@@ -16,7 +18,7 @@ const SectionTotals = () => {
             </span>
           </div>
 
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full border-b pb-2">
             <div className="flex items-center justify-between">
               <span className="text-sm capitalize font-semibold">
                 shipping:
@@ -38,16 +40,12 @@ const SectionTotals = () => {
             </div>
           </div>
 
-          <div className="w-full bg-gray-400" style={{ height: "1px" }}></div>
-
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between border-b pb-2">
             <span className="capitalize font-semibold text-xl">total</span>
             <span className="font-semibold text-gray-500 text-xl">
               ${cartItems.total + cartItems.shipping.price}
             </span>
           </div>
-
-          <div className="w-full bg-gray-400" style={{ height: "1px" }}></div>
 
           <button className="p-3 rounded w-full capitalize bg-blue-500 outline-none text-white font-bold mt-2">
             proceed to checkout

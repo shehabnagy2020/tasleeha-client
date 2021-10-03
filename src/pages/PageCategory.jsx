@@ -104,9 +104,9 @@ const PageCategory = () => {
   }, [sortType, itemsList]);
 
   return (
-    <div className="">
+    <div className="w-screen h-screen">
+      <Header />
       <div className="container mx-auto lg:px-20">
-        <Header />
         <SectionPagintation
           title={category_id}
           path={[
@@ -127,8 +127,8 @@ const PageCategory = () => {
           viewType={viewType}
           itemsList={itemsList}
         />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

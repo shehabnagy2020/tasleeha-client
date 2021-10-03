@@ -35,7 +35,7 @@ const PageRegister = () => {
               onChange={handleChange}
               value={info.full_name}
               className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
-              placeholder="Full Name"
+              placeholder="Full name"
             />
           </div>
           <div className="mb-3">
@@ -71,12 +71,12 @@ const PageRegister = () => {
               onChange={handleChange}
               value={info.phone_number}
               className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
-              placeholder="Phone Number"
+              placeholder="Phone number"
             />
           </div>
           <button
             type="submit"
-            className="rounded-lg bg-green-500 text-white px-10 py-3 font-bold text-lg mb-5"
+            className="rounded-lg bg-blue-500 text-white px-10 py-3 font-bold text-lg mb-5"
           >
             Register
           </button>

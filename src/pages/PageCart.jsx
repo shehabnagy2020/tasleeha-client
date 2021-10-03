@@ -14,7 +14,7 @@ const PageCart = () => {
   });
 
   return (
-    <div className="">
+    <div className="w-screen h-screen">
       <Header />
       {cartItems?.items && (
         <div className="container mx-auto lg:px-20">

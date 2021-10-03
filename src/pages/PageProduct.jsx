@@ -91,9 +91,9 @@ const PageProduct = () => {
   ]);
 
   return (
-    <div className="">
+    <div className="w-screen h-screen">
+      <Header />
       <div className="container mx-auto lg:px-20">
-        <Header />
         <SectionPagintation
           title={product_id}
           path={[
@@ -106,8 +106,8 @@ const PageProduct = () => {
         />
         <SectionInfo itemData={itemData} />
         <SectionSimilarPro itemsList={itemsList} />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

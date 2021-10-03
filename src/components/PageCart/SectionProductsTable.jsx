@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import HelperContext from "../../contexts/HelperContext";
+import { Link } from "react-router-dom";
 
 const SectionProductsTable = () => {
   let { cartItems, handleDecreaseQty, handleDelete, handleIncreaseQty } =
@@ -21,13 +22,19 @@ const SectionProductsTable = () => {
         <tbody className="">
           {cartItems.items.map((item, index) => (
             <tr
-              className={`${index < cartItems.length - 1 ? "border-b" : ""}`}
+              className={`${
+                index < cartItems.items.length - 1 ? "border-b" : ""
+              }`}
               key={item.id}
             >
               <td className="p-2 hidden md:flex">
-                <img src={item.img} alt="" className="w-16 h-16" />
+                <Link to={`/product/${item.id}`}>
+                  <img src={item.img} alt="" className="w-16 h-16" />
+                </Link>
               </td>
-              <td className="p-2 text-sm lg:text-base">{item.name}</td>
+              <td className="p-2 text-sm lg:text-base">
+                <Link to={`/product/${item.id}`}>{item.name}</Link>
+              </td>
               <td className="p-2 font-medium text-gray-400 text-base">
                 ${item.price}
               </td>
