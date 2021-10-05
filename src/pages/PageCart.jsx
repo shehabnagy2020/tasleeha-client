@@ -12,11 +12,11 @@ const PageCart = () => {
   useEffect(() => {
     // handleLocation();
   });
-
+  console.log(cartItems);
   return (
     <div className="w-screen h-screen overflow-x-hidden">
       <Header />
-      {cartItems?.items && (
+      {cartItems?.items?.length >= 1 ? (
         <div className="container mx-auto lg:px-20">
           <SectionPagintation
             title={"Cart"}
@@ -33,6 +33,14 @@ const PageCart = () => {
             <div className="lg:col-span-3">
               <SectionTotals />
             </div>
+          </div>
+        </div>
+      ) : (
+        <div className="container mx-auto lg:px-20">
+          <div className="border bg-gray-200 p-10 rounded my-20">
+            <p className="font-medium text-2xl capitalize text-gray-600 text-center">
+              لا يوجد منتجات في السلة الان
+            </p>
           </div>
         </div>
       )}

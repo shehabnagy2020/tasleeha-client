@@ -10,13 +10,7 @@ const SectionDetails = ({
   return (
     <div className="">
       <div className="pb-5 flex flex-col items-center justify-center">
-        <p className="text-base font-normal mb-5 text-gray-900 w-full md:w-10/12 lg:w-8/12 mx-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi harum
-          esse consequatur officiis laudantium fuga iure, delectus voluptate
-          voluptates eos veritatis! Adipisci, obcaecati? Praesentium officiis,
-          libero quas ipsa iusto commodi.
-        </p>
-        <div className="flex justify-between items-center w-full flex-col md:flex-row gap-y-3 md:gap-y-0 border-b pb-5">
+        <div className="flex justify-between pb-3 pt-6 items-center w-full flex-col md:flex-row gap-y-3 md:gap-y-0">
           <div className="md:flex gap-x-3 items-center justify-start hidden">
             <button
               onClick={() => setViewType(1)}

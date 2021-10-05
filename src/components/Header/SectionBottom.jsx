@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SectionAccount from "./SectionAccount";
 import SectionSearch from "./SectionSearch";
 
 const SectionBottom = () => {
   const [isSearch, setIsSearch] = useState(false);
 
-  useEffect(() => {
-    let sticky = document.getElementById("sticky-bottom");
-    let height = sticky.offsetHeight;
-    document.getElementById("root").style.marginBottom = height + "px";
-  }, []);
+  // useEffect(() => {
+  //   let sticky = document.getElementById("sticky-bottom");
+  //   let height = sticky.offsetHeight;
+  //   document.getElementById("root").style.marginBottom = height + "px";
+  // }, []);
 
   return (
     <div
       id="sticky-bottom"
-      className="flex lg:hidden fixed w-screen z-10 "
+      className="flex lg:hidden fixed w-screen z-10 h-20"
       style={{ bottom: "-2px", left: "0" }}
     >
       <div className="relative w-full">
-        <div className="py-2 px-3 border-t bg-white w-full flex justify-around items-center">
+        <div className="px-3 border-t bg-white w-full h-full flex justify-around items-center">
           <a
             href="/"
             className="flex flex-col items-center justify-center text-gray-400 text-base "
@@ -28,14 +28,16 @@ const SectionBottom = () => {
             </div>
             <span className="capitalize">store</span>
           </a>
-          <button
-            className="flex flex-col items-center justify-center text-gray-400 text-base"
-            onClick={(_) => setIsSearch((p) => !p)}
-          >
-            <div className="flex items-center justify-center">
-              <i className="material-icons">search</i>
-            </div>
-            <span className="capitalize">search</span>
+          <div className="">
+            <button
+              className="flex flex-col items-center justify-center text-gray-400 text-base"
+              onClick={(_) => setIsSearch((p) => !p)}
+            >
+              <div className="flex items-center justify-center">
+                <i className="material-icons">search</i>
+              </div>
+              <span className="capitalize">search</span>
+            </button>
             {isSearch && (
               <div
                 className="absolute w-screen"
@@ -46,7 +48,7 @@ const SectionBottom = () => {
                 </div>
               </div>
             )}
-          </button>
+          </div>
           <SectionAccount />
         </div>
       </div>

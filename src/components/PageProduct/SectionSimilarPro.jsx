@@ -1,5 +1,5 @@
 import React from "react";
-import Item from "../PageCategory/SectionItemsList/Item";
+import Item from "../Common/Items/Item";
 
 const SectionSimilarPro = ({ itemsList }) => {
   return (

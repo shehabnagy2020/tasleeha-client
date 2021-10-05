@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 const SectionSearch = () => {
   const [searchText, setSearchText] = useState("");
   let historyChanger = useHistory();
+  let { search_text } = useParams();
+
+  useEffect(() => {
+    if (search_text) setSearchText(search_text);
+  }, [search_text]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

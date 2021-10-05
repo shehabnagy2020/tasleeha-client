@@ -16,7 +16,7 @@ const SectionInfo = ({ itemData, handleIncreaseQty, handleDecreaseQty }) => {
         </div>
         <div className="flex flex-col gap-y-3 items-center lg:items-start text-center lg:text-left flex-grow-0">
           <h3 className="capitalize text-2xl font-bold">{itemData.name}</h3>
-          <p className="text-lg font-normal">{itemData.text}</p>
+          <p className="text-base font-normal">{itemData.text}</p>
           <div className="flex text-xl font-light capitalize gap-x-3">
             <span className="">price: ${itemData.price}</span>
             <span>.</span>

@@ -1,6 +1,6 @@
 import React from "react";
-import Item from "./Item";
-import Item2 from "./Item2";
+import Item from "../Common/Items/Item";
+import Item2 from "../Common/Items/Item2";
 
 const SectionItemsList = ({ viewType, sortType, itemsList }) => {
   return (
