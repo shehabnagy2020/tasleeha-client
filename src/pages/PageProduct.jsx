@@ -10,13 +10,15 @@ import { useParams } from "react-router-dom";
 const PageProduct = () => {
   const { product_id } = useParams();
 
-  const itemData = {
+  const [itemData, setItemData] = useState({
     id: 1,
     img: ItemIMG,
     name: "ajssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
     text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
     price: 50,
-  };
+    totalQty: 10,
+    quantity: 1,
+  });
   const [itemsList] = useState([
     {
       id: 1,
@@ -90,8 +92,20 @@ const PageProduct = () => {
     },
   ]);
 
+  const handleIncreaseQty = (index) => {
+    if (itemData.quantity < itemData.totalQty) {
+      setItemData({ ...itemData, quantity: itemData.quantity + 1 });
+    }
+  };
+
+  const handleDecreaseQty = (index) => {
+    if (itemData.quantity >= 2) {
+      setItemData({ ...itemData, quantity: itemData.quantity - 1 });
+    }
+  };
+
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen overflow-x-hidden">
       <Header />
       <div className="container mx-auto lg:px-20">
         <SectionPagintation
@@ -104,7 +118,11 @@ const PageProduct = () => {
             { name: product_id },
           ]}
         />
-        <SectionInfo itemData={itemData} />
+        <SectionInfo
+          itemData={itemData}
+          handleDecreaseQty={handleDecreaseQty}
+          handleIncreaseQty={handleIncreaseQty}
+        />
         <SectionSimilarPro itemsList={itemsList} />
       </div>
       <Footer />

@@ -16,7 +16,9 @@ const Item2 = ({ itemData }) => {
           </a>
           <p className="">{itemData.text}</p>
           <div className="flex justify-between items-center w-full">
-            <span className="text-blue-500 font-bold">{itemData.price} $</span>
+            <span className="text-xl font-light capitalize">
+              {itemData.price} $
+            </span>
             <button
               onClick={(_) => handleAddCart(itemData)}
               className="text-white px-3 py-2 bg-blue-500 rounded-md font-bold capitalize"

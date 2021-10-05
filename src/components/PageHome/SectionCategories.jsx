@@ -47,38 +47,24 @@ const SectionCategories = () => {
   ];
   return (
     <div className="py-14">
-      <div className="w-full relative">
-        <div className="swiper-button-prev"></div>
-        <div className="cats-container overflow-hidden w-4/5 mx-auto">
-          <div className="swiper-wrapper">
-            {cats.map((item) => (
-              <a
-                href={`/category/${item.id}`}
-                className="swiper-slide"
-                key={item.id}
-              >
-                <div
-                  className="flex items-center justify-center gap-y-2 flex-col"
-                  id={item.id}
-                >
-                  <div className="rounded-full bg-white border p-3">
-                    <img
-                      src={item.img}
-                      alt=""
-                      className="w-10 h-10 rounded-full"
-                    />
-                  </div>
-                  <div className="">
-                    <span className="capitalize font-normal text-lg">
-                      {item.text}
-                    </span>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
+      <div className="w-full relative border rounded">
+        <h1 className="font-light text-2xl text-gray-500 capitalize m-5 ">
+          all categories
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {cats.map((item) => (
+            <a
+              href={`/category/${item.id}`}
+              key={item.id}
+              className="border-r flex flex-col justify-center items-center gap-y-3 px-5 my-5"
+            >
+              <img src={item.img} className="object-cover w-48" alt="" />
+              <p className="text-gray-500 capitalize font-normal text-lg">
+                {item.text}
+              </p>
+            </a>
+          ))}
         </div>
-        <div className="swiper-button-next"></div>
       </div>
     </div>
   );

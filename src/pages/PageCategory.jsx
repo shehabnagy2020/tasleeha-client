@@ -104,7 +104,7 @@ const PageCategory = () => {
   }, [sortType, itemsList]);
 
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen overflow-x-hidden">
       <Header />
       <div className="container mx-auto lg:px-20">
         <SectionPagintation
