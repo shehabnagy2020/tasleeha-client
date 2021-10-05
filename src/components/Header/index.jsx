@@ -4,6 +4,7 @@ import SectionAccount from "./SectionAccount";
 import SectionBottom from "./SectionBottom";
 import SectionCart from "./SectionCart";
 import SectionSearch from "./SectionSearch";
+import { Link } from "react-router-dom";
 
 const Header = ({ noMarginBottom }) => {
   return (
@@ -12,9 +13,9 @@ const Header = ({ noMarginBottom }) => {
       style={{ height: "10%" }}
     >
       <div className="flex justify-between items-center px-10">
-        <a href="/" className="flex-shrink-0">
+        <Link href="/" className="flex-shrink-0">
           <img src={LogoIMG} alt="" className="w-40 lg:w-48" />
-        </a>
+        </Link>
         <div className="flex gap-x-5 flex-grow justify-end">
           <div className="hidden lg:flex w-full gap-x-4">
             <SectionSearch />

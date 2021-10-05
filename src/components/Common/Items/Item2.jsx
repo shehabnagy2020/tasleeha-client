@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import HelperContext from "../../../contexts/HelperContext";
+import { Link } from "react-router-dom";
 
 const Item2 = ({ itemData }) => {
   let { handleAddCart } = useContext(HelperContext);
@@ -7,13 +8,13 @@ const Item2 = ({ itemData }) => {
   return (
     <div className="">
       <div className="flex gap-x-6 items-center justify-start">
-        <a href={`/product/${itemData.id}`}>
+        <Link href={`/product/${itemData.id}`}>
           <img src={itemData.img} alt="" className="w-60 h-60 object-cover" />
-        </a>
+        </Link>
         <div href={`/product/${itemData.id}`} className="flex flex-col gap-y-2">
-          <a href={`/product/${itemData.id}`}>
+          <Link href={`/product/${itemData.id}`}>
             <h3 className="capitalize text-lg font-medium">{itemData.name}</h3>
-          </a>
+          </Link>
           <p className="">{itemData.text}</p>
           <div className="flex justify-between items-center w-full">
             <span className="text-xl font-light capitalize">

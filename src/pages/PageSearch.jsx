@@ -22,7 +22,7 @@ const PageSearch = () => {
       setItemsList([...newItems]);
     }
   }, [search_text]);
-  console.log(itemsList);
+
   useEffect(() => {
     if (itemsList && itemsList.length >= 1) {
       let newList = [...itemsList];

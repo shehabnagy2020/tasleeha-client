@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import HelperContext from "../../contexts/HelperContext";
+import { Link } from "react-router-dom";
 
 const SectionCart = () => {
   let { cartItems } = useContext(HelperContext);
 
   return (
-    <a href="/cart" className="flex items-center flex-shrink-0">
+    <Link href="/cart" className="flex items-center flex-shrink-0">
       <div className="hidden md:flex mr-1">
         {cartItems?.items?.length >= 1 && (
           <span className="text-sm text-gray-400 font-bold capitalize">
@@ -26,7 +27,7 @@ const SectionCart = () => {
           <span className="material-icons">shopping_cart</span>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 
