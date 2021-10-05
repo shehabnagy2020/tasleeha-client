@@ -6,7 +6,7 @@ const SectionCart = () => {
   let { cartItems } = useContext(HelperContext);
 
   return (
-    <Link href="/cart" className="flex items-center flex-shrink-0">
+    <Link to="/cart" className="flex items-center flex-shrink-0">
       <div className="hidden md:flex mr-1">
         {cartItems?.items?.length >= 1 && (
           <span className="text-sm text-gray-400 font-bold capitalize">
@@ -16,7 +16,7 @@ const SectionCart = () => {
       </div>
       <div className="relative">
         {cartItems?.items?.length >= 1 && (
-          <div className="absolute" style={{ bottom: "60%", left: "60%" }}>
+          <div className="absolute" style={{ bottom: "60%", right: "60%" }}>
             <span className="bg-red-400 px-2 py-1 rounded-full text-white text-sm">
               {cartItems?.items?.length}
             </span>

@@ -8,11 +8,11 @@ const Item2 = ({ itemData }) => {
   return (
     <div className="">
       <div className="flex gap-x-6 items-center justify-start">
-        <Link href={`/product/${itemData.id}`}>
+        <Link to={`/product/${itemData.id}`}>
           <img src={itemData.img} alt="" className="w-60 h-60 object-cover" />
         </Link>
         <div href={`/product/${itemData.id}`} className="flex flex-col gap-y-2">
-          <Link href={`/product/${itemData.id}`}>
+          <Link to={`/product/${itemData.id}`}>
             <h3 className="capitalize text-lg font-medium">{itemData.name}</h3>
           </Link>
           <p className="">{itemData.text}</p>

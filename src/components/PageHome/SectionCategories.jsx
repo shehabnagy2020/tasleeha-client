@@ -56,7 +56,7 @@ const SectionCategories = () => {
             <a
               href={`/category/${item.id}`}
               key={item.id}
-              className="border-r flex flex-col justify-center items-center gap-y-3 px-5 my-5"
+              className="md:border-r flex flex-col justify-center items-center gap-y-3 px-5 my-5"
             >
               <img src={item.img} className="object-cover w-48" alt="" />
               <p className="text-gray-500 capitalize font-normal text-lg">

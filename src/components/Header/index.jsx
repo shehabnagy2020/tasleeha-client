@@ -13,7 +13,7 @@ const Header = ({ noMarginBottom }) => {
       style={{ height: "10%" }}
     >
       <div className="flex justify-between items-center px-10">
-        <Link href="/" className="flex-shrink-0">
+        <Link to="/" className="flex-shrink-0">
           <img src={LogoIMG} alt="" className="w-40 lg:w-48" />
         </Link>
         <div className="flex gap-x-5 flex-grow justify-end">
