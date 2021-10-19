@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import { API } from "../CONST";
 
 // create new react context and export it
 const HelperContext = React.createContext();
@@ -7,10 +9,24 @@ export default HelperContext;
 export const HelperContextProvider = ({ children }) => {
   // create new states
   const [cartItems, setCartItems] = useState({});
+  const [categoryItems, setCategoryItems] = useState([]);
 
   useEffect(() => {
     let oldCart = localStorage.getItem("cartItems");
     if (oldCart) setCartItems(JSON.parse(oldCart));
+  }, []);
+
+  const getCategoryItems = async () => {
+    const axiosReq = await new Axios({
+      baseURL: API,
+      url: "/api/categories/getAll",
+      method: "GET",
+    });
+    console.log(axiosReq);
+    setCategoryItems([...axiosReq?.data?.data]);
+  };
+  useEffect(() => {
+    getCategoryItems();
   }, []);
 
   const handleIncreaseQty = (index) => {
@@ -94,6 +110,7 @@ export const HelperContextProvider = ({ children }) => {
         handleDelete,
         handleLocation,
         handleAddCart,
+        categoryItems,
       }}
     >
       {children}

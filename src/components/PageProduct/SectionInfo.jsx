@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { API } from "../../CONST";
 import HelperContext from "../../contexts/HelperContext";
 
 const SectionInfo = ({ itemData, handleIncreaseQty, handleDecreaseQty }) => {
@@ -9,14 +10,17 @@ const SectionInfo = ({ itemData, handleIncreaseQty, handleDecreaseQty }) => {
       <div className="flex gap-y-8 items-center flex-col lg:flex-row lg:gap-x-10 lg:gap-y-0">
         <div className="w-4/5 lg:w-3/4">
           <img
-            src={itemData.img}
+            src={API + "/" + itemData.image}
             alt=""
-            className="w-full max-h-100 rounded object-cover"
+            className="max-h-100 rounded object-cover"
           />
         </div>
         <div className="flex flex-col gap-y-3 items-center lg:items-start text-center lg:text-left flex-grow-0">
           <h3 className="capitalize text-2xl font-bold">{itemData.name}</h3>
-          <p className="text-base font-normal">{itemData.text}</p>
+          <div className="text-base font-normal">
+            <div dangerouslySetInnerHTML={{ __html: itemData.description }} />
+          </div>
+
           <div className="flex text-xl font-light capitalize gap-x-3">
             <span className="">price: ${itemData.price}</span>
             <span>.</span>

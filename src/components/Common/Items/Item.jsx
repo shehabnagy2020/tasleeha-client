@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import HelperContext from "../../../contexts/HelperContext";
 import { Link } from "react-router-dom";
+import { API } from "../../../CONST";
 
 const Item = ({ itemData }) => {
   let { handleAddCart } = useContext(HelperContext);
@@ -8,10 +9,17 @@ const Item = ({ itemData }) => {
   return (
     <div className="">
       <div className="flex flex-col gap-y-2 items-start justify-center">
-        <Link to={`/product/${itemData.id}`} className="w-full">
-          <img src={itemData.img} alt="" className="w-full object-cover" />
+        <Link
+          to={{ pathname: `/product/${itemData.id}`, state: itemData }}
+          className="w-full"
+        >
+          <img
+            src={API + "/" + itemData.image}
+            alt=""
+            className="w-full object-cover"
+          />
         </Link>
-        <Link to={`/product/${itemData.id}`}>
+        <Link to={{ pathname: `/product/${itemData.id}`, state: itemData }}>
           <h3 className="capitalize text-lg font-medium">{itemData.name}</h3>
         </Link>
         <div className="flex justify-between items-center w-full">

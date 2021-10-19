@@ -1,24 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SectionInfo from "../components/PageProduct/SectionInfo";
 import ItemIMG from "../assets/images/item.jpg";
 import SectionSimilarPro from "../components/PageProduct/SectionSimilarPro";
 import SectionPagintation from "../components/Common/SectionPagintation";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 const PageProduct = () => {
   const { product_id } = useParams();
+  const { state } = useLocation();
 
-  const [itemData, setItemData] = useState({
-    id: 1,
-    img: ItemIMG,
-    name: "ajssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
-    text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
-    price: 50,
-    totalQty: 10,
-    quantity: 1,
-  });
+  const [itemData, setItemData] = useState({});
+  useEffect(() => {
+    setItemData({ ...state, quantity: 1 });
+  }, [state]);
   const [itemsList] = useState([
     {
       id: 1,
