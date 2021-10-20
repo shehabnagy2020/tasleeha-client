@@ -5,6 +5,7 @@ import SectionBottom from "./SectionBottom";
 import SectionCart from "./SectionCart";
 import SectionSearch from "./SectionSearch";
 import { Link } from "react-router-dom";
+import SectionNotifications from "./SectionNotifications";
 
 const Header = ({ noMarginBottom }) => {
   return (
@@ -17,7 +18,7 @@ const Header = ({ noMarginBottom }) => {
           <img src={LogoIMG} alt="" className="w-40 lg:w-48" />
         </Link>
         <div className="flex gap-x-5 flex-grow justify-end">
-          <div className="hidden lg:flex w-full gap-x-4">
+          <div className="hidden lg:flex w-full gap-x-2">
             <SectionSearch />
             <SectionAccount />
             <Link
@@ -29,6 +30,7 @@ const Header = ({ noMarginBottom }) => {
               </div>
             </Link>
           </div>
+          <SectionNotifications className="hidden lg:flex" />
           <SectionCart />
         </div>
       </div>

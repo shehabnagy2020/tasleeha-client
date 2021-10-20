@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SectionAccount from "./SectionAccount";
 import SectionSearch from "./SectionSearch";
 import { Link } from "react-router-dom";
+import SectionNotifications from "./SectionNotifications";
 
 const SectionBottom = () => {
   const [isSearch, setIsSearch] = useState(false);
@@ -20,15 +21,7 @@ const SectionBottom = () => {
     >
       <div className="relative w-full">
         <div className="px-3 border-t bg-white w-full h-full flex justify-around items-center">
-          <Link
-            to="/"
-            className="flex flex-col items-center justify-center text-gray-400 text-base "
-          >
-            <div className="flex items-center justify-center">
-              <i className="material-icons">store</i>
-            </div>
-            <span className="capitalize">الرئيسية</span>
-          </Link>
+          <SectionNotifications />
           <Link
             to="/offers"
             className="flex flex-col items-center justify-center text-gray-400 text-base "

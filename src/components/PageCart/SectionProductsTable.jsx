@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import HelperContext from "../../contexts/HelperContext";
 import { Link } from "react-router-dom";
+import { API } from "../../CONST";
 
 const SectionProductsTable = () => {
   let { cartItems, handleDecreaseQty, handleDelete, handleIncreaseQty } =
@@ -10,12 +11,12 @@ const SectionProductsTable = () => {
     <div className="w-full">
       <table className="w-full">
         <thead className="capitalize text-gray-500 border-b text-xs lg:text-sm">
-          <tr className="text-left">
+          <tr className="text-right">
             <th className="p-2 w-20 h-20 hidden md:flex"></th>
-            <th className="p-2 w-5/12 md:w-6/12">product</th>
-            <th className="p-2">price</th>
-            <th className="p-2">quantity</th>
-            <th className="p-2">subtotal</th>
+            <th className="p-2 w-5/12 md:w-6/12">المنتج</th>
+            <th className="p-2">السعر</th>
+            <th className="p-2">الكمية</th>
+            <th className="p-2">الاجمالي</th>
             <th className="p-2 w-5"></th>
           </tr>
         </thead>
@@ -29,7 +30,11 @@ const SectionProductsTable = () => {
             >
               <td className="p-2 hidden md:flex">
                 <Link to={`/product/${item.id}`}>
-                  <img src={item.img} alt="" className="w-16 h-16" />
+                  <img
+                    src={API + "/" + item.image}
+                    alt=""
+                    className="w-16 h-16"
+                  />
                 </Link>
               </td>
               <td className="p-2 text-sm lg:text-base">

@@ -8,8 +8,10 @@ export default HelperContext;
 
 export const HelperContextProvider = ({ children }) => {
   // create new states
-  const [cartItems, setCartItems] = useState({});
+  const [cartItems, setCartItems] = useState({ items: [], total: 0 });
   const [categoryItems, setCategoryItems] = useState([]);
+  const [isNotification, setIsNotification] = useState(false);
+  const [notificationsItems, setNotificationsItems] = useState([]);
 
   useEffect(() => {
     let oldCart = localStorage.getItem("cartItems");
@@ -22,11 +24,20 @@ export const HelperContextProvider = ({ children }) => {
       url: "/api/categories/getAll",
       method: "GET",
     });
-    console.log(axiosReq);
     setCategoryItems([...axiosReq?.data?.data]);
+  };
+  const getNotificationItems = async () => {
+    const axiosReq = await new Axios({
+      baseURL: API,
+      url: "/api/notifications/getAll",
+      method: "GET",
+    });
+    console.log(axiosReq);
+    setNotificationsItems([...axiosReq?.data?.data]);
   };
   useEffect(() => {
     getCategoryItems();
+    getNotificationItems();
   }, []);
 
   const handleIncreaseQty = (index) => {
@@ -78,10 +89,8 @@ export const HelperContextProvider = ({ children }) => {
     navigator.geolocation.getCurrentPosition((e) => {
       let newCartItems = {
         ...cartItems,
-        shipping: {
-          ...cartItems.shipping,
-          address: `${e.coords.latitude}  ${e.coords.longitude}`,
-        },
+        lat: e.coords.latitude,
+        long: e.coords.longitude,
       };
       setCartItems(newCartItems);
       localStorage.setItem("cartItems", JSON.stringify(newCartItems));
@@ -111,6 +120,9 @@ export const HelperContextProvider = ({ children }) => {
         handleLocation,
         handleAddCart,
         categoryItems,
+        isNotification,
+        setIsNotification,
+        notificationsItems,
       }}
     >
       {children}

@@ -19,11 +19,11 @@ const PageCart = () => {
       {cartItems?.items?.length >= 1 ? (
         <div className="container mx-auto lg:px-20">
           <SectionPagintation
-            title={"Cart"}
+            title={"السلة"}
             path={[
-              { name: "home", link: "/" },
+              { name: "الرئيسية", link: "/" },
               { name: "/" },
-              { name: "Cart" },
+              { name: "السلة" },
             ]}
           />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-5 lg:gap-y-0 lg:gap-x-8 pb-7">
