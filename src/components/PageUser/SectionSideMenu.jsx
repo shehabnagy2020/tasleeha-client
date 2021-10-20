@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import UserContext from "../../contexts/UserContext";
 
 const SectionSideMenu = ({ setIsOpen, isOpen }) => {
-  const handleLogout = () => {};
+  const { userInfo, handleLogout } = useContext(UserContext);
 
   return (
     <div
-      className={`w-full md:w-2/6 lg:w-4/12 xl:w-2/12 h-full border-r justify-center ${
+      className={`w-full md:w-2/6 lg:w-4/12 xl:w-1/4 h-full border-l justify-center ${
         isOpen ? "" : "hidden md:flex"
       }`}
     >
@@ -24,7 +25,7 @@ const SectionSideMenu = ({ setIsOpen, isOpen }) => {
             </i>
           </div>
           <h3 className="capitalize text-base text-center lg:text-xl text-gray-500 font-bold">
-            shehab nagy
+            {userInfo.full_name}
           </h3>
         </div>
         <div className="flex flex-col items-center justify-center gap-y-3 ">
@@ -34,7 +35,7 @@ const SectionSideMenu = ({ setIsOpen, isOpen }) => {
             activeClassName="text-blue-500"
           >
             <i className="material-icons ">manage_accounts</i>
-            <span className=" capitalize">profile</span>
+            <span className=" capitalize">الحساب</span>
           </NavLink>
           <NavLink
             to="/user/orders"
@@ -42,7 +43,7 @@ const SectionSideMenu = ({ setIsOpen, isOpen }) => {
             activeClassName="text-blue-500"
           >
             <i className="material-icons">receipt</i>
-            <span className="capitalize">orders</span>
+            <span className="capitalize">الطلبات</span>
           </NavLink>
         </div>
         <div className="flex flex-col items-center justify-center">

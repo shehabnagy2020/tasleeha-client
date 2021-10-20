@@ -12,20 +12,20 @@ const SectionInfo = ({ itemData, handleIncreaseQty, handleDecreaseQty }) => {
           <img
             src={API + "/" + itemData.image}
             alt=""
-            className="max-h-100 rounded object-cover"
+            className="max-h-100 w-80 rounded object-cover"
           />
         </div>
-        <div className="flex flex-col gap-y-3 items-center lg:items-start text-center lg:text-left flex-grow-0">
+        <div className="flex flex-col gap-y-3 items-center lg:items-start text-center lg:text-left flex-grow-0 flex-shrink-0">
           <h3 className="capitalize text-2xl font-bold">{itemData.name}</h3>
           <div className="text-base font-normal">
             <div dangerouslySetInnerHTML={{ __html: itemData.description }} />
           </div>
 
           <div className="flex text-xl font-light capitalize gap-x-3">
-            <span className="">price: ${itemData.price}</span>
+            <span className="">السعر: {itemData.price}$</span>
             <span>.</span>
             <span className="">
-              total: ${itemData.price * itemData.quantity}
+              الاجمالي: {itemData.price * itemData.quantity}$
             </span>
           </div>
           <div className="flex gap-x-5 items-center">
@@ -46,9 +46,9 @@ const SectionInfo = ({ itemData, handleIncreaseQty, handleDecreaseQty }) => {
             </div>
             <button
               onClick={(_) => handleAddCart(itemData)}
-              className="rounded-lg text-white  capitalize bg-blue-500 border py-3 px-6"
+              className="rounded-lg text-white  capitalize bg-blue-500 border py-2 px-5"
             >
-              add to cart
+              اضف الي السله
             </button>
           </div>
         </div>

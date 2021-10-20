@@ -20,6 +20,14 @@ const Header = ({ noMarginBottom }) => {
           <div className="hidden lg:flex w-full gap-x-4">
             <SectionSearch />
             <SectionAccount />
+            <Link
+              to="/offers"
+              className="flex items-center justify-center text-gray-400"
+            >
+              <div className="flex items-center justify-center">
+                <i className="material-icons">whatshot</i>
+              </div>
+            </Link>
           </div>
           <SectionCart />
         </div>

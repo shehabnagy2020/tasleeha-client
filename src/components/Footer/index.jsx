@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="flex items-center justify-center h-full border-t">
         <div className="flex items-center justify-center">
           <span className="text-gray-400 font-bold text-sm capitalize">
-            sovio © all rights reserved {new Date().getFullYear()}
+            sovio © جميع الحقوق محفوظة {new Date().getFullYear()}
           </span>
         </div>
       </div>

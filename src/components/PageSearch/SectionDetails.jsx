@@ -29,22 +29,20 @@ const SectionDetails = ({
               <span className="material-icons">toc</span>
             </button>
             <div className="">
-              <span className="capitalize">
-                there are {itemsList.length} items
-              </span>
+              <span className="capitalize">يوجد {itemsList.length} منتج</span>
             </div>
           </div>
           <div className="flex items-center gap-x-3 justify-end">
-            <span className="capitalize">sort by:</span>
+            <span className="capitalize">رتب بواسطة:</span>
             <button className="relative rounded-lg border w-40 p-2 dropdown-toggle">
               <span className="capitalize">
                 {sortType
                   ? sortType === 1
-                    ? "Z-A"
+                    ? "ابجدي تنازلي"
                     : sortType === 2
-                    ? "Lowest to Highest"
-                    : "Highest to Lowest"
-                  : "A-Z"}
+                    ? "السعر اقل الي اعلي"
+                    : "السعر اعلي الي اقل"
+                  : "ابجدي تصاعدي"}
               </span>
               <div
                 className="absolute left-0 z-10 w-full dropdown-menu"
@@ -55,25 +53,25 @@ const SectionDetails = ({
                     className="w-full p-2 capitalize hover:bg-gray-200"
                     onClick={() => setSortType(0)}
                   >
-                    A-Z
+                    ابجدي تصاعدي
                   </div>
                   <div
                     className="p-3 w-full capitalize hover:bg-gray-200"
                     onClick={() => setSortType(1)}
                   >
-                    Z-A
+                    ابجدي تنازلي
                   </div>
                   <div
                     className="p-3 w-full capitalize hover:bg-gray-200"
                     onClick={() => setSortType(2)}
                   >
-                    lowest to highest
+                    السعر اقل الي اعلي
                   </div>
                   <div
                     className="p-3 w-full capitalize hover:bg-gray-200"
                     onClick={() => setSortType(3)}
                   >
-                    highest to lowest
+                    السعر اعلي الي اقل
                   </div>
                 </div>
               </div>

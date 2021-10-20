@@ -28,7 +28,7 @@ const PageUser = () => {
               <i className="material-icons text-lg">menu</i>
             </button>
             <h2 className="text-gray-500 capitalize font-medium text-xl">
-              {loc.pathname === "/user/profile" ? "profile" : "my orders"}
+              {loc.pathname === "/user/profile" ? "الحساب" : "الطلبات"}
             </h2>
           </div>
           <Switch>

@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import LoginIMG from "../assets/images/login-pic.jpg";
+import { Link } from "react-router-dom";
+import UserContext from "../contexts/UserContext";
 
 const PageRegister = () => {
+  const { userLoader, handleRegister } = useContext(UserContext);
   const [info, setInfo] = useState({
     email: "",
     password: "",
     full_name: "",
-    phone_number: "",
+    phone: "",
+    address: "",
+    city: "",
+    region: "",
+    notification_token: "",
   });
   const handleChange = (e) => {
     let { id, value } = e.target;
     setInfo({ ...info, [id]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleRegister(info);
   };
 
   return (
@@ -21,10 +33,16 @@ const PageRegister = () => {
         className="absolute w-full h-full top-0 left-0 object-cover"
       />
       <div className="relative w-10/12 md:w-8/12 rounded p-5 text-white bg-black bg-opacity-40">
-        <form className="flex flex-col justify-center items-center">
-          <h1 className="font-bold text-5xl capitalize mb-5">sovio</h1>
+        <form
+          autoComplete={false}
+          onSubmit={handleSubmit}
+          className="flex flex-col justify-center items-center"
+        >
+          <Link to="/">
+            <h1 className="font-bold text-5xl capitalize mb-5">sovio</h1>
+          </Link>
           <span className="font-light text-xl capitalize mb-5">
-            create new account with us
+            انشئ حساب جديد معنا
           </span>
           <div className="mb-3">
             <input
@@ -35,7 +53,8 @@ const PageRegister = () => {
               onChange={handleChange}
               value={info.full_name}
               className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
-              placeholder="Full name"
+              placeholder="الاسم كامل"
+              autoFocus
             />
           </div>
           <div className="mb-3">
@@ -47,7 +66,7 @@ const PageRegister = () => {
               onChange={handleChange}
               value={info.email}
               className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
-              placeholder="Email"
+              placeholder="البريد الالكتروني"
             />
           </div>
           <div className="mb-3">
@@ -59,34 +78,61 @@ const PageRegister = () => {
               onChange={handleChange}
               value={info.password}
               className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
-              placeholder="Password"
+              placeholder="الرقم السري"
             />
           </div>
           <div className="mb-5">
             <input
               type="tel"
               name=""
-              id="phone_number"
+              id="phone"
               required
               onChange={handleChange}
-              value={info.phone_number}
+              value={info.phone}
               className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
-              placeholder="Phone number"
+              placeholder="رقم الهاتف"
             />
           </div>
-          <button
-            type="submit"
-            className="rounded-lg bg-blue-500 text-white px-10 py-3 font-bold text-lg mb-5"
-          >
-            Register
-          </button>
+          <div className="mb-5">
+            <input
+              type="text"
+              name=""
+              id="address"
+              required
+              onChange={handleChange}
+              value={info.address}
+              className="border-b-2 bg-transparent text-white outline-none border-white py-3 w-56 md:w-72"
+              placeholder="العنوان"
+            />
+          </div>
+          {userLoader.registerError && (
+            <div className="mb-2">
+              <span className="text-red-500">{userLoader.registerError}</span>
+            </div>
+          )}
+          <div className="mb-5 text-center">
+            {userLoader.register ? (
+              <div className="transition-all animate-pulse">
+                <span className="material-icons text-blue-500 text-4xl">
+                  pending
+                </span>
+              </div>
+            ) : (
+              <button
+                type="submit"
+                className="rounded-lg bg-blue-500 text-white px-10 py-3 font-bold text-lg "
+              >
+                تسجيل حساب
+              </button>
+            )}
+          </div>
           <span className="text-white font-bold text-lg capitalize">
-            have an account?{" "}
+            هل لديك حساب؟{" "}
             <a
               href="/login"
               className="text-blue-400 hover:underline font-normal"
             >
-              login
+              تسجيل دخول
             </a>
           </span>
         </form>

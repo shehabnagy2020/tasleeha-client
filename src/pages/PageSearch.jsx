@@ -5,21 +5,31 @@ import SectionDetails from "../components/PageSearch/SectionDetails";
 import SectionItemsList from "../components/PageSearch/SectionItemsList";
 import DATA from "../DATA.json";
 import { sortBy, reverse } from "lodash";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import { API } from "../CONST";
+import Axios from "axios";
 
 const PageSearch = () => {
   const [sortType, setSortType] = useState(0);
   const [viewType, setViewType] = useState(1);
   const { search_text } = useParams();
   const [itemsList, setItemsList] = useState([]);
-
+  const history = useHistory();
+  const searchWeb = async () => {
+    const axiosReq = await new Axios({
+      baseURL: API,
+      url: "/api/product/search",
+      method: "GET",
+      params: { query: search_text.toLowerCase() },
+    });
+    setItemsList([...axiosReq?.data?.data]);
+    console.log(axiosReq);
+  };
   useEffect(() => {
-    if (search_text && DATA.length >= 1) {
-      let newItems = DATA.filter((item) =>
-        item?.name?.toLowerCase().includes(search_text)
-      );
-      console.log(DATA, newItems);
-      setItemsList([...newItems]);
+    if (search_text) {
+      searchWeb();
+    } else {
+      history.push("/");
     }
   }, [search_text]);
 

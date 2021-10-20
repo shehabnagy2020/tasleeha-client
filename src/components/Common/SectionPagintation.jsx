@@ -5,7 +5,7 @@ const SectionPagintation = ({ title, path = [] }) => {
     <div className="">
       <div className="py-4 my-5 bg-gray-100 flex justify-center items-center">
         <div className="flex flex-col gap-y-3 text-center">
-          <h1 className="text-3xl font-light capitalize">{title}</h1>
+          {title && <h1 className="text-3xl font-light capitalize">{title}</h1>}
           <div className="flex items-center justify-center gap-x-2">
             {path.map((i, j) =>
               i.link ? (

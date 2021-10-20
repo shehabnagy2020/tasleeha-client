@@ -2,42 +2,33 @@ import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import SectionPagintation from "../components/Common/SectionPagintation";
 import Footer from "../components/Footer";
-import SectionDetails from "../components/PageCategory/SectionDetails";
-import SectionItemsList from "../components/PageCategory/SectionItemsList";
+import SectionDetails from "../components/PageProductsOffers/SectionDetails";
+import SectionItemsList from "../components/PageProductsOffers/SectionItemsList";
 import { sortBy, reverse } from "lodash";
 import { useParams } from "react-router-dom";
 import HelperContext from "../contexts/HelperContext";
 import Axios from "axios";
 import { API } from "../CONST";
 
-const PageCategory = () => {
+const PageProductsOffers = () => {
   const [sortType, setSortType] = useState(0);
   const [viewType, setViewType] = useState(1);
-  const { category_id } = useParams();
   const [itemsList, setItemsList] = useState([]);
   const [categoryData, setCategoryData] = useState({});
-  const { categoryItems } = useContext(HelperContext);
 
-  const getCategoryProducts = async () => {
+  const getProductsOffers = async () => {
     const axiosReq = await new Axios({
       baseURL: API,
       url: "/api/product/getAll",
       method: "GET",
-      params: { category_id },
+      params: { type: "decor" },
     });
     console.log(axiosReq);
     setItemsList([...axiosReq?.data?.data]);
   };
-
   useEffect(() => {
-    if (categoryItems?.length >= 1) {
-      let [data] = categoryItems.filter((d) => d.id == category_id);
-      if (data) {
-        setCategoryData({ ...data });
-        getCategoryProducts(category_id);
-      }
-    }
-  }, [category_id, categoryItems]);
+    getProductsOffers();
+  }, []);
   useEffect(() => {
     if (itemsList.length >= 1) {
       let newList = [...itemsList];
@@ -65,26 +56,38 @@ const PageCategory = () => {
           path={[
             { name: "الرئيسية", link: "/" },
             { name: "/" },
-            { name: categoryData.name },
+            { name: "عروض" },
           ]}
         />
-        <SectionDetails
-          viewType={viewType}
-          setViewType={setViewType}
-          sortType={sortType}
-          setSortType={setSortType}
-          itemsList={itemsList}
-          categoryData={categoryData}
-        />
-        <SectionItemsList
-          sortType={sortType}
-          viewType={viewType}
-          itemsList={itemsList}
-        />
+        {itemsList?.length >= 1 ? (
+          <>
+            <SectionDetails
+              viewType={viewType}
+              setViewType={setViewType}
+              sortType={sortType}
+              setSortType={setSortType}
+              itemsList={itemsList}
+              categoryData={categoryData}
+            />
+            <SectionItemsList
+              sortType={sortType}
+              viewType={viewType}
+              itemsList={itemsList}
+            />
+          </>
+        ) : (
+          <div className="container mx-auto lg:px-20">
+            <div className="border bg-gray-200 p-10 rounded my-20">
+              <p className="font-medium text-2xl capitalize text-gray-600 text-center">
+                لا يوجد منتجات عليها عروض الان
+              </p>
+            </div>
+          </div>
+        )}
       </div>
       <Footer />
     </div>
   );
 };
 
-export default PageCategory;
+export default PageProductsOffers;

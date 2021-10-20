@@ -1,92 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SectionInfo from "../components/PageProduct/SectionInfo";
-import ItemIMG from "../assets/images/item.jpg";
 import SectionSimilarPro from "../components/PageProduct/SectionSimilarPro";
 import SectionPagintation from "../components/Common/SectionPagintation";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useHistory } from "react-router-dom";
+import { API } from "../CONST";
+import Axios from "axios";
+import HelperContext from "../contexts/HelperContext";
 
 const PageProduct = () => {
   const { product_id } = useParams();
   const { state } = useLocation();
+  const { push } = useHistory();
+  const [itemsList, setItemsList] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState({});
+  const { categoryItems } = useContext(HelperContext);
+
+  const getCategoryProducts = async () => {
+    const axiosReq = await new Axios({
+      baseURL: API,
+      url: "/api/product/getAll",
+      method: "GET",
+      params: { category_id: state?.category_id },
+    });
+    let container = [];
+    if (axiosReq?.data?.data?.length >= 1)
+      for (let i = 0; i < axiosReq.data.data.length; i++) {
+        const element = axiosReq.data.data[i];
+        if (element.id != state.id) container.push(element);
+        if (container.length >= 5) break;
+      }
+    setItemsList([...container]);
+  };
 
   const [itemData, setItemData] = useState({});
+
   useEffect(() => {
-    setItemData({ ...state, quantity: 1 });
+    if (state?.id) {
+      setItemData({ ...state, quantity: 1 });
+      getCategoryProducts();
+      let [cu] = categoryItems.filter((i) => i.id == state.category_id);
+      setCurrentCategory({ ...cu });
+    } else {
+      push("/");
+    }
   }, [state]);
-  const [itemsList] = useState([
-    {
-      id: 1,
-      img: ItemIMG,
-      name: "ajssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
-      price: 50,
-    },
-    {
-      id: 2,
-      img: ItemIMG,
-      name: "qsjssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
-      price: 5,
-    },
-    {
-      id: 3,
-      img: ItemIMG,
-      name: "fjssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
-      price: 20,
-    },
-    {
-      id: 4,
-      img: ItemIMG,
-      name: "rssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
-      price: 10,
-    },
-    {
-      id: 5,
-      img: ItemIMG,
-      name: "zjssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
-      price: 2,
-    },
-    {
-      id: 6,
-      img: ItemIMG,
-      name: "njssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
-      price: 90,
-    },
-    {
-      id: 7,
-      img: ItemIMG,
-      name: "yjssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
-      price: 100,
-    },
-    {
-      id: 8,
-      img: ItemIMG,
-      name: "tjssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
-      price: 7,
-    },
-    {
-      id: 9,
-      img: ItemIMG,
-      name: "ojssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
-      price: 30,
-    },
-    {
-      id: 10,
-      img: ItemIMG,
-      name: "kjssad ahdjsha jkdhsjkadh ksajd kjsah dkjhasd",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, quaerat eum iusto consectetur maiores suscipit ipsum voluptates quo vitae aperiam debitis nisi eius eaque nam animi fugiat ut beatae assumenda?",
-      price: 50,
-    },
-  ]);
 
   const handleIncreaseQty = (index) => {
     if (itemData.quantity < itemData.totalQty) {
@@ -105,13 +64,15 @@ const PageProduct = () => {
       <Header />
       <div className="container mx-auto lg:px-20">
         <SectionPagintation
-          title={product_id}
           path={[
-            { name: "home", link: "/" },
+            { name: "الرئيسيه", link: "/" },
             { name: "/" },
-            { name: "some-category", link: `/category/some-category` },
+            {
+              name: currentCategory.name,
+              link: `/category/${currentCategory.id}`,
+            },
             { name: "/" },
-            { name: product_id },
+            { name: state?.name },
           ]}
         />
         <SectionInfo

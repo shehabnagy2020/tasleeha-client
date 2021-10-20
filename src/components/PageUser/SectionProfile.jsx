@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import UserContext from "../../contexts/UserContext";
 
 const SectionProfile = () => {
+  const { userInfo, userLoader, handleEditUser } = useContext(UserContext);
   const [profileInfo, setProfileInfo] = useState({
     full_name: "",
     email: "",
-    phone_number: "",
+    phone: "",
   });
+
+  useEffect(() => {
+    setProfileInfo({ ...userInfo });
+  }, [userInfo]);
 
   const handleChange = (e) => {
     let { id, value } = e.target;
@@ -14,6 +20,7 @@ const SectionProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleEditUser(profileInfo);
   };
 
   return (
@@ -23,7 +30,7 @@ const SectionProfile = () => {
         className="flex flex-col items-center justify-center gap-y-5 mx-auto md:w-8/12 lg:w-6/12 xl:w-5/12"
       >
         <div className="w-full flex flex-col gap-y-1">
-          <span className="text-gray-500 capitalize">full name:</span>
+          <span className="text-gray-500 capitalize">الاسم كامل:</span>
           <input
             type="text"
             id="full_name"
@@ -34,7 +41,7 @@ const SectionProfile = () => {
           />
         </div>
         <div className="w-full flex flex-col gap-y-1">
-          <span className="text-gray-500 capitalize">email:</span>
+          <span className="text-gray-500 capitalize">البريد الالكتروني:</span>
           <input
             type="email"
             id="email"
@@ -45,20 +52,33 @@ const SectionProfile = () => {
           />
         </div>
         <div className="w-full flex flex-col gap-y-1">
-          <span className="text-gray-500 capitalize">phone number:</span>
+          <span className="text-gray-500 capitalize">رقم الهاتف</span>
           <input
             type="tel"
-            id="phone_number"
+            id="phone"
             onChange={handleChange}
-            value={profileInfo.phone_number}
+            value={profileInfo.phone}
             required
             className="border w-full outline-none p-2 rounded"
           />
         </div>
         <div className="w-full flex flex-col gap-y-1">
-          <button className="p-2 bg-blue-500 text-white font-medium capitalize">
-            edit
-          </button>
+          {userLoader.editUserError && (
+            <div className="mb-2">
+              <span className="text-red-500">{userLoader.editUserError}</span>
+            </div>
+          )}
+          {userLoader.editUser ? (
+            <div className="transition-all animate-pulse">
+              <span className="material-icons text-blue-500 text-4xl">
+                pending
+              </span>
+            </div>
+          ) : (
+            <button className="p-2 bg-blue-500 text-white font-medium capitalize">
+              تعديل
+            </button>
+          )}
         </div>
       </form>
     </div>
