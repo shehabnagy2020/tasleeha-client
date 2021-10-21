@@ -94,14 +94,19 @@ export const HelperContextProvider = ({ children }) => {
   };
 
   const handleLocation = () => {
-    navigator.geolocation.getCurrentPosition((e) => {
-      let newCartItems = {
-        ...cartItems,
-        lat: e.coords.latitude,
-        long: e.coords.longitude,
-      };
-      setCartItems(newCartItems);
-    });
+    navigator.geolocation.getCurrentPosition(
+      (e) => {
+        console.log(e);
+        let newCartItems = {
+          ...cartItems,
+          lat: e.coords.latitude,
+          long: e.coords.longitude,
+        };
+        setCartItems(newCartItems);
+      },
+      (f) => {},
+      { enableHighAccuracy: true, maximumAge: 2000, timeout: 5000 }
+    );
   };
 
   const handleAddCart = (obj) => {
