@@ -10,7 +10,7 @@ const SectionProductsTable = () => {
   return (
     <div className="w-full">
       <table className="w-full">
-        <thead className="capitalize text-gray-500 border-b text-xs lg:text-sm">
+        <thead className="capitalize text-gray-500 border-b text-base lg:text-sm">
           <tr className="text-right">
             <th className="p-2 w-20 h-20 hidden md:flex"></th>
             <th className="p-2 w-5/12 md:w-6/12">المنتج</th>
@@ -21,11 +21,11 @@ const SectionProductsTable = () => {
           </tr>
         </thead>
         <tbody className="">
-          {cartItems.items.map((item, index) => (
+          {cartItems.products.map((item, index) => (
             <tr
               className={`${
-                index < cartItems.items.length - 1 ? "border-b" : ""
-              }`}
+                index < cartItems.products.length - 1 ? "border-b" : ""
+              } text-base lg:text-lg`}
               key={item.id}
             >
               <td className="p-2 hidden md:flex">
@@ -37,7 +37,7 @@ const SectionProductsTable = () => {
                   />
                 </Link>
               </td>
-              <td className="p-2 text-sm lg:text-base">
+              <td className="p-2">
                 <Link to={`/product/${item.id}`}>{item.name}</Link>
               </td>
               <td className="p-2 font-medium text-gray-400 text-base">

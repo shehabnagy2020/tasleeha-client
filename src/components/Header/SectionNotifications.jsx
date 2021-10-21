@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import HelperContext from "../../contexts/HelperContext";
 
 const SectionNotifications = ({ className }) => {
-  let { notificationsItems, setIsNotification } = useContext(HelperContext);
+  let { setIsNotification } = useContext(HelperContext);
 
   return (
     <button

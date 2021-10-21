@@ -1,5 +1,5 @@
 import React from "react";
-import Moment from "moment";
+import { API } from "../../../CONST";
 
 const OrderItem = ({ itemData }) => {
   return (
@@ -8,7 +8,7 @@ const OrderItem = ({ itemData }) => {
         itemData.delivered_date ? "" : "border-blue-500"
       } bg-gray-200 flex flex-col gap-y-2 rounded-md`}
     >
-      <div className="flex items-center gap-x-2">
+      {/* <div className="flex items-center gap-x-2">
         {itemData.delivered_date ? (
           <span className="text-gray-500 capitalize font-medium">
             {itemData.status} at{" "}
@@ -19,23 +19,27 @@ const OrderItem = ({ itemData }) => {
             {itemData.status}
           </span>
         )}
-      </div>
+      </div> */}
       <p className="text-gray-500 text-lg capitalize">
-        total: ${itemData.total} . address: {itemData.address}
+        الاجمالي: ${itemData.total_price} . العنوان: {itemData?.User?.address}
       </p>
       <div className="bg-white px-4 rounded">
-        {itemData.items.map((item) => (
+        {itemData?.Order_Products?.map((item) => (
           <div
             key={item.id}
             className="flex gap-x-2 items-center border-b py-4"
           >
-            <img src={item.img} alt="" className="w-20 h-20" />
+            <img
+              src={API + "/" + item.Product.image}
+              alt=""
+              className="w-20 h-20"
+            />
             <div className="flex flex-col gap-y-2">
               <p className="text-gray-500 capitalize font-medium">
                 {item.name}
               </p>
               <span className="text-gray-500 text-sm capitalize">
-                price: ${item.price} . quantity: {item.quantity}
+                السعر: ${item.product_price} . الكمية: {item.quantity}
               </span>
             </div>
           </div>

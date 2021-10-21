@@ -1,5 +1,4 @@
 import React from "react";
-import { API } from "../../CONST";
 
 const SectionDetails = ({
   viewType,
@@ -7,7 +6,6 @@ const SectionDetails = ({
   sortType,
   setSortType,
   itemsList,
-  categoryData,
 }) => {
   return (
     <div className="">
@@ -18,9 +16,7 @@ const SectionDetails = ({
           voluptates eos veritatis! Adipisci, obcaecati? Praesentium officiis,
           libero quas ipsa iusto commodi.
         </p> */}
-        <div className="flex justify-center items-center">
-          <img src={API + "/" + categoryData.image} alt="" className="w-40" />
-        </div>
+
         <div className="flex justify-between items-center w-full flex-col md:flex-row gap-y-3 md:gap-y-0 border-b pb-5">
           <div className="md:flex gap-x-3 items-center justify-start hidden">
             <button

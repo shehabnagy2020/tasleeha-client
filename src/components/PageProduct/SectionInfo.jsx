@@ -31,14 +31,14 @@ const SectionInfo = ({ itemData, handleIncreaseQty, handleDecreaseQty }) => {
           <div className="flex gap-x-5 items-center">
             <div className="flex items-center gap-x-3">
               <button
-                onClick={(_) => handleIncreaseQty()}
+                onClick={handleIncreaseQty}
                 className="bg-gray-200 text-gray-600 rounded-full flex justify-center items-center w-7 h-7 md:w-10 md:h-10"
               >
                 <i className="material-icons text-sm md:text-xl">add</i>
               </button>
               <span className="text-gray-800 text-lg">{itemData.quantity}</span>
               <button
-                onClick={(_) => handleDecreaseQty()}
+                onClick={handleDecreaseQty}
                 className="bg-gray-200 text-gray-600 rounded-full flex justify-center items-center w-7 h-7 md:w-10 md:h-10"
               >
                 <i className="material-icons text-sm md:text-xl">remove</i>

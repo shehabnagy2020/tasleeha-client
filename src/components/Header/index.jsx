@@ -1,5 +1,5 @@
 import React from "react";
-import LogoIMG from "../../assets/images/logo.jpg";
+import LogoIMG from "../../assets/images/logo.png";
 import SectionAccount from "./SectionAccount";
 import SectionBottom from "./SectionBottom";
 import SectionCart from "./SectionCart";

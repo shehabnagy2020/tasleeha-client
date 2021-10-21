@@ -28,7 +28,7 @@ const SectionSearch = () => {
         <input
           type="search"
           className="bg-transparent flex-grow outline-none"
-          placeholder="search..."
+          placeholder="ابحث...."
           onChange={(e) => setSearchText(e.target.value)}
           value={searchText}
         />

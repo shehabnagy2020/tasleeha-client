@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SectionDetails from "../components/PageSearch/SectionDetails";
 import SectionItemsList from "../components/PageSearch/SectionItemsList";
-import DATA from "../DATA.json";
 import { sortBy, reverse } from "lodash";
 import { useParams, useHistory } from "react-router-dom";
 import { API } from "../CONST";

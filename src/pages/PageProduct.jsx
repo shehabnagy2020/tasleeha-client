@@ -4,13 +4,12 @@ import Footer from "../components/Footer";
 import SectionInfo from "../components/PageProduct/SectionInfo";
 import SectionSimilarPro from "../components/PageProduct/SectionSimilarPro";
 import SectionPagintation from "../components/Common/SectionPagintation";
-import { useParams, useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { API } from "../CONST";
 import Axios from "axios";
 import HelperContext from "../contexts/HelperContext";
 
 const PageProduct = () => {
-  const { product_id } = useParams();
   const { state } = useLocation();
   const { push } = useHistory();
   const [itemsList, setItemsList] = useState([]);
@@ -48,9 +47,7 @@ const PageProduct = () => {
   }, [state]);
 
   const handleIncreaseQty = (index) => {
-    if (itemData.quantity < itemData.totalQty) {
-      setItemData({ ...itemData, quantity: itemData.quantity + 1 });
-    }
+    setItemData({ ...itemData, quantity: itemData.quantity + 1 });
   };
 
   const handleDecreaseQty = (index) => {

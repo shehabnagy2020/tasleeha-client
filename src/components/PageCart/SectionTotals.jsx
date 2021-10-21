@@ -1,8 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import HelperContext from "../../contexts/HelperContext";
+import UserContext from "../../contexts/UserContext";
+import { Link } from "react-router-dom";
 
 const SectionTotals = () => {
-  let { cartItems, handleLocation } = useContext(HelperContext);
+  let { cartItems, handleLocation, handleAddOrder, helperLoader } =
+    useContext(HelperContext);
+  let { userInfo } = useContext(UserContext);
+
+  useEffect(() => {
+    handleLocation();
+  }, []);
   return (
     <div className="">
       <div className="border p-3">
@@ -46,9 +54,29 @@ const SectionTotals = () => {
             </span>
           </div>
 
-          <button className="p-3 rounded w-full capitalize bg-blue-500 outline-none text-white font-bold mt-2">
-            المتابعه للشراء
-          </button>
+          {userInfo.full_name ? (
+            helperLoader.addOrder ? (
+              <div className="transition-all animate-pulse w-full text-center">
+                <span className="material-icons text-blue-500 text-4xl">
+                  pending
+                </span>
+              </div>
+            ) : (
+              <button
+                onClick={handleAddOrder}
+                className="p-3 rounded w-full capitalize bg-blue-500 outline-none text-white font-bold mt-2 text-center"
+              >
+                المتابعه للشراء
+              </button>
+            )
+          ) : (
+            <Link
+              to="/login"
+              className="p-3 rounded w-full capitalize bg-blue-500 outline-none text-white font-bold mt-2 text-center"
+            >
+              تسجيل الدخول للمتابعه
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import SectionPagintation from "../components/Common/SectionPagintation";
 import Footer from "../components/Footer";
 import SectionDetails from "../components/PageProductsOffers/SectionDetails";
 import SectionItemsList from "../components/PageProductsOffers/SectionItemsList";
 import { sortBy, reverse } from "lodash";
-import { useParams } from "react-router-dom";
-import HelperContext from "../contexts/HelperContext";
+
 import Axios from "axios";
 import { API } from "../CONST";
 
@@ -14,8 +13,6 @@ const PageProductsOffers = () => {
   const [sortType, setSortType] = useState(0);
   const [viewType, setViewType] = useState(1);
   const [itemsList, setItemsList] = useState([]);
-  const [categoryData, setCategoryData] = useState({});
-
   const getProductsOffers = async () => {
     const axiosReq = await new Axios({
       baseURL: API,
@@ -52,7 +49,7 @@ const PageProductsOffers = () => {
       <Header />
       <div className="container mx-auto lg:px-20">
         <SectionPagintation
-          title={categoryData.name}
+          title={"عروض"}
           path={[
             { name: "الرئيسية", link: "/" },
             { name: "/" },
@@ -67,7 +64,6 @@ const PageProductsOffers = () => {
               sortType={sortType}
               setSortType={setSortType}
               itemsList={itemsList}
-              categoryData={categoryData}
             />
             <SectionItemsList
               sortType={sortType}
