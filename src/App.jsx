@@ -6,6 +6,7 @@ import PageCart from "./pages/PageCart";
 import PageCategory from "./pages/PageCategory";
 import PageHome from "./pages/PageHome";
 import PageLogin from "./pages/PageLogin";
+import PagePrivacy from "./pages/PagePrivacy";
 import PageProduct from "./pages/PageProduct";
 import PageProductsOffers from "./pages/PageProductsOffers";
 import PageRegister from "./pages/PageRegister";
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="">
       <Switch>
+        <Route path="/privacy" component={PagePrivacy} />
         <Route path="/cart" component={PageCart} />
         <Route path="/category/:category_id" component={PageCategory} />
         <Route path="/product/:product_id" component={PageProduct} />
