@@ -22,10 +22,10 @@ const SectionInfo = ({ itemData, handleIncreaseQty, handleDecreaseQty }) => {
           </div>
 
           <div className="flex text-xl font-light capitalize gap-x-3">
-            <span className="">السعر: {itemData.price}$</span>
+            <span className="">السعر: {itemData.price}</span>
             <span>.</span>
             <span className="">
-              الاجمالي: {itemData.price * itemData.quantity}$
+              الاجمالي: {itemData.price * itemData.quantity}
             </span>
           </div>
           <div className="flex gap-x-5 items-center">

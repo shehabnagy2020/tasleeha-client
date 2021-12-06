@@ -24,7 +24,7 @@ const Item = ({ itemData }) => {
         </Link>
         <div className="flex justify-between items-center w-full">
           <span className="text-xl font-light capitalize">
-            السعر: {itemData.price}$
+            السعر: {itemData.price}
           </span>
           <button
             onClick={(_) => handleAddCart(itemData)}

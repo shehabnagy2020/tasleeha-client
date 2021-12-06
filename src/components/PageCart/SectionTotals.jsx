@@ -22,7 +22,7 @@ const SectionTotals = () => {
           <div className="flex items-center justify-between">
             <span className="text-sm capitalize font-semibold">المجموع</span>
             <span className="text-sm font-semibold text-gray-500">
-              ${cartItems.total}
+              {cartItems.total}
             </span>
           </div>
 
@@ -50,7 +50,7 @@ const SectionTotals = () => {
           <div className="flex items-center justify-between border-b pb-2">
             <span className="capitalize font-semibold text-xl">الاجمالي</span>
             <span className="font-semibold text-gray-500 text-xl">
-              ${cartItems.total}
+              {cartItems.total}
             </span>
           </div>
 

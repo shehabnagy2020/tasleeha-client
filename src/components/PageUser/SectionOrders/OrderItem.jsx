@@ -21,7 +21,7 @@ const OrderItem = ({ itemData }) => {
         )}
       </div> */}
       <p className="text-gray-500 text-lg capitalize">
-        الاجمالي: ${itemData.total_price} . العنوان: {itemData?.User?.address}
+        الاجمالي: {itemData.total_price} . العنوان: {itemData?.User?.address}
       </p>
       <div className="bg-white px-4 rounded">
         {itemData?.Order_Products?.map((item) => (
@@ -39,7 +39,7 @@ const OrderItem = ({ itemData }) => {
                 {item.name}
               </p>
               <span className="text-gray-500 text-sm capitalize">
-                السعر: ${item.product_price} . الكمية: {item.quantity}
+                السعر: {item.product_price} . الكمية: {item.quantity}
               </span>
             </div>
           </div>

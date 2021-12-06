@@ -23,7 +23,7 @@ const Item2 = ({ itemData }) => {
           <p className="">{itemData.text}</p>
           <div className="flex justify-between items-center w-full">
             <span className="text-xl font-light capitalize">
-              {itemData.price}$
+              {itemData.price}
             </span>
             <button
               onClick={(_) => handleAddCart(itemData)}

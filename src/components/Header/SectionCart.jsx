@@ -10,7 +10,7 @@ const SectionCart = () => {
       <div className="hidden md:flex mr-1">
         {cartItems?.products?.length >= 1 && (
           <span className="text-sm text-gray-400 font-bold capitalize">
-            ${cartItems.total}
+            {cartItems.total}
           </span>
         )}
       </div>

@@ -41,7 +41,7 @@ const SectionProductsTable = () => {
                 <Link to={`/product/${item.id}`}>{item.name}</Link>
               </td>
               <td className="p-2 font-medium text-gray-400 text-base">
-                ${item.price}
+                {item.price}
               </td>
               <td className="p-2">
                 <div className="flex items-center gap-x-2">
@@ -63,7 +63,7 @@ const SectionProductsTable = () => {
                 </div>
               </td>
               <td className="p-2 font-medium text-gray-400 text-base">
-                ${item.quantity * item.price}
+                {item.quantity * item.price}
               </td>
               <td className="p-2">
                 <button
