@@ -56,7 +56,7 @@ const SectionCategories = () => {
           جميع الفئات
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {categoryItems?.map((item) => (
+          {categoryItems?.all?.map((item) => (
             <a
               href={`/category/${item.id}`}
               key={item.id}
