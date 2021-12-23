@@ -47,7 +47,7 @@ const PageProductsOffers = () => {
   return (
     <div className="w-screen h-screen overflow-x-hidden">
       <Header />
-      <div className="container mx-auto lg:px-20">
+      <div className="container mx-auto lg:px-20 mt-44 lg:mt-48 xl:mt-36">
         <SectionPagintation
           title={"عروض"}
           path={[

@@ -10,7 +10,7 @@ import SectionNotifications from "./SectionNotifications";
 const Header = ({ noMarginBottom }) => {
   return (
     <div
-      className="w-full flex flex-col justify-center border-b"
+      className="w-full flex flex-col justify-center border-b fixed z-10 bg-white"
       style={{ height: "10%" }}
     >
       <div className="flex justify-between items-center px-10">

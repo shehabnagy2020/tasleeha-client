@@ -13,29 +13,31 @@ const PageUser = () => {
   return (
     <div className="w-screen h-screen">
       <Header noMarginBottom={true} />
-      <div className="flex w-full" style={{ height: "82%" }}>
-        <SectionSideMenu setIsOpen={setIsOpen} isOpen={isOpen} />
-        <div
-          className={`w-full flex flex-col p-5 overflow-y-auto ${
-            isOpen ? "hidden md:flex" : ""
-          }`}
-        >
-          <div className="flex items-center gap-x-3 mb-16">
-            <button
-              onClick={(_) => setIsOpen((p) => !p)}
-              className="w-8 h-8 border text-gray-500 flex md:hidden justify-center items-center"
-            >
-              <i className="material-icons text-lg">menu</i>
-            </button>
-            <h2 className="text-gray-500 capitalize font-medium text-xl">
-              {loc.pathname === "/user/profile" ? "الحساب" : "الطلبات"}
-            </h2>
+      <div className="mt-44 lg:mt-48 xl:mt-36">
+        <div className="flex w-full" style={{ height: "82%" }}>
+          <SectionSideMenu setIsOpen={setIsOpen} isOpen={isOpen} />
+          <div
+            className={`w-full flex flex-col p-5 overflow-y-auto ${
+              isOpen ? "hidden md:flex" : ""
+            }`}
+          >
+            <div className="flex items-center gap-x-3 mb-16">
+              <button
+                onClick={(_) => setIsOpen((p) => !p)}
+                className="w-8 h-8 border text-gray-500 flex md:hidden justify-center items-center"
+              >
+                <i className="material-icons text-lg">menu</i>
+              </button>
+              <h2 className="text-gray-500 capitalize font-medium text-xl">
+                {loc.pathname === "/user/profile" ? "الحساب" : "الطلبات"}
+              </h2>
+            </div>
+            <Switch>
+              <Route path="/user/profile" component={SectionProfile} />
+              <Route path="/user/orders" component={SectionOrders} />
+              <Redirect to="/user/profile" />
+            </Switch>
           </div>
-          <Switch>
-            <Route path="/user/profile" component={SectionProfile} />
-            <Route path="/user/orders" component={SectionOrders} />
-            <Redirect to="/user/profile" />
-          </Switch>
         </div>
       </div>
       <Footer />

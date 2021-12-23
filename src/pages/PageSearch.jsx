@@ -53,30 +53,32 @@ const PageSearch = () => {
   return (
     <div className="w-screen h-screen overflow-x-hidden">
       <Header />
-      {itemsList.length >= 1 ? (
-        <div className="container mx-auto lg:px-20">
-          <SectionDetails
-            viewType={viewType}
-            setViewType={setViewType}
-            sortType={sortType}
-            setSortType={setSortType}
-            itemsList={itemsList}
-          />
-          <SectionItemsList
-            sortType={sortType}
-            viewType={viewType}
-            itemsList={itemsList}
-          />
-        </div>
-      ) : (
-        <div className="container mx-auto lg:px-20">
-          <div className="border bg-gray-200 p-10 rounded my-20">
-            <p className="font-medium text-2xl capitalize text-gray-600 text-center">
-              لا يوجد منتجات بهذا البحث
-            </p>
+      <div className=" mt-44 lg:mt-48 xl:mt-36">
+        {itemsList.length >= 1 ? (
+          <div className="container mx-auto lg:px-20">
+            <SectionDetails
+              viewType={viewType}
+              setViewType={setViewType}
+              sortType={sortType}
+              setSortType={setSortType}
+              itemsList={itemsList}
+            />
+            <SectionItemsList
+              sortType={sortType}
+              viewType={viewType}
+              itemsList={itemsList}
+            />
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="container mx-auto lg:px-20">
+            <div className="border bg-gray-200 p-10 rounded my-20">
+              <p className="font-medium text-2xl capitalize text-gray-600 text-center">
+                لا يوجد منتجات بهذا البحث
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
       <Footer />
     </div>
   );

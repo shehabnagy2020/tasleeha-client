@@ -16,7 +16,7 @@ const Item = ({ itemData }) => {
           <img
             src={API + "/" + itemData.image}
             alt=""
-            className="w-full object-cover"
+            className="w-full object-contain max-h-40"
           />
         </Link>
         <Link to={{ pathname: `/product/${itemData.id}`, state: itemData }}>

@@ -17,19 +17,38 @@ export const HelperContextProvider = ({ children }) => {
   const [helperLoader, setHelperLoader] = useState({});
   const { userInfo } = useContext(UserContext);
   const history = useHistory();
+  const [mainLoader, setMainLoader] = useState(false);
 
   useEffect(() => {
     let oldCart = localStorage.getItem("cartItems");
     if (oldCart) setCartItems(JSON.parse(oldCart));
   }, []);
 
-  const getCategoryItems = async () => {
-    const axiosReq = await new Axios({
-      baseURL: API,
-      url: "/api/categories/getAll",
-      method: "GET",
-    });
-    setCategoryItems([...axiosReq?.data?.data]);
+  const getCategoryItems = async (values = []) => {
+    try {
+      values = await Axios({
+        baseURL: API,
+        url: "/api/categories/getAll",
+        method: "GET",
+        params: { nested: "1" },
+      });
+      let all = [],
+        product = [],
+        service = [],
+        names = [],
+        subs = [];
+      let cat = values.data.data.map((c) => {
+        if (c.type === "product" && c.parent_id) product.push(c);
+        else if (c.type === "service" && c.parent_id) service.push(c);
+        if (c.sub_categories?.length >= 1) subs.push(...c.sub_categories);
+        all.push(c);
+        names[c.id] = c.name;
+      });
+      setCategoryItems({ all, product, service, subs, names });
+      return { all, product, service, subs, names };
+    } catch (error) {
+      console.log(error);
+    }
   };
   const getNotificationItems = async () => {
     setHelperLoader({ ...helperLoader, notifications: true });
@@ -45,9 +64,14 @@ export const HelperContextProvider = ({ children }) => {
       console.log(error.response);
     }
   };
+  const initilize = async () => {
+    setMainLoader(true);
+    await getCategoryItems();
+    await getNotificationItems();
+    setMainLoader(false);
+  };
   useEffect(() => {
-    getCategoryItems();
-    getNotificationItems();
+    initilize();
   }, []);
 
   const handleIncreaseQty = (index) => {
@@ -119,6 +143,7 @@ export const HelperContextProvider = ({ children }) => {
     };
     setCartItems(newCartItems);
     localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+    alert(`المنتج ${obj.name} تم اضافتة للسلة`);
   };
 
   const handleAddOrder = async () => {
@@ -164,6 +189,8 @@ export const HelperContextProvider = ({ children }) => {
         notificationsItems,
         handleAddOrder,
         helperLoader,
+        getCategoryItems,
+        mainLoader,
       }}
     >
       {children}

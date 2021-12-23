@@ -13,7 +13,7 @@ const Item2 = ({ itemData }) => {
           <img
             src={API + "/" + itemData.image}
             alt=""
-            className="w-60 h-60 object-cover"
+            className="w-60 h-60 object-contain"
           />
         </Link>
         <div className="flex flex-col gap-y-2">
