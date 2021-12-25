@@ -53,7 +53,7 @@ const SectionCategories = () => {
     <div className="py-14">
       <div className="w-full relative border rounded">
         <h1 className="font-light text-2xl text-gray-500 capitalize m-5 ">
-          جميع الفئات
+          جميع الفئات الاساسية
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {categoryItems?.all?.map((item) => (
