@@ -9,9 +9,9 @@ const SectionCarousel = ({ swipersData }) => {
     new Swiper(".swiper-container", {
       loop: true,
       autoHeight: true,
-      // speed: "1000ms",
+      //speed: "5000ms",
       grabCursor: true,
-      // autoplay: true,
+      autoplay: true,
 
       allowSlideNext: true,
       navigation: {
