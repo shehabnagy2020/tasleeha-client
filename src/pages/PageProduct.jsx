@@ -39,12 +39,16 @@ const PageProduct = () => {
     if (state?.id) {
       setItemData({ ...state, quantity: 1 });
       getCategoryProducts();
-      let [cu] = categoryItems.filter((i) => i.id == state.category_id);
-      setCurrentCategory({ ...cu });
     } else {
       push("/");
     }
   }, [state]);
+  useEffect(() => {
+    if (categoryItems?.subs?.length >= 1 && state?.category_id) {
+      let [cu] = categoryItems.subs.filter((i) => i.id == state.category_id);
+      setCurrentCategory({ ...cu });
+    }
+  }, [categoryItems, state]);
 
   const handleIncreaseQty = (index) => {
     setItemData({ ...itemData, quantity: itemData.quantity + 1 });

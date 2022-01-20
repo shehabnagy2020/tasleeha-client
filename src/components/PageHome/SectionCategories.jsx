@@ -50,31 +50,33 @@ const SectionCategories = () => {
   //   { id: 6, img: LogoIMG, text: "sad6" },
   // ];
   return (
-    <div className="py-14">
-      <div className="w-full relative border rounded">
-        <h1 className="font-light text-2xl text-gray-500 capitalize m-5 ">
-          جميع الفئات الاساسية
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {categoryItems?.all?.map((item) => (
-            <a
-              href={`/category/${item.id}`}
-              key={item.id}
-              className="md:border-r flex flex-col justify-center items-center gap-y-3 px-5 my-5"
-            >
-              <img
-                src={API + "/" + item.image}
-                className="object-cover w-32"
-                alt=""
-              />
-              <p className="text-gray-500 capitalize font-normal text-lg">
-                {item.name}
-              </p>
-            </a>
-          ))}
+    categoryItems?.all?.length >= 1 && (
+      <div className="py-14">
+        <div className="w-full relative border rounded">
+          <h1 className="font-light text-2xl text-gray-500 capitalize m-5 ">
+            جميع الفئات الاساسية
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {categoryItems?.all?.map((item) => (
+              <a
+                href={`/category/${item.id}`}
+                key={item.id}
+                className="md:border-r flex flex-col justify-center items-center gap-y-3 px-5 my-5"
+              >
+                <img
+                  src={API + "/" + item.image}
+                  className="object-cover w-32"
+                  alt=""
+                />
+                <p className="text-gray-500 capitalize font-normal text-lg">
+                  {item.name}
+                </p>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    )
   );
 };
 
