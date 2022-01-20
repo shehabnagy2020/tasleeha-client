@@ -26,7 +26,9 @@ const PageHome = () => {
     <div className="w-screen h-screen overflow-x-hidden">
       <Header />
       <div className="container mx-auto pt-5 lg:px-20 mt-44 lg:mt-48 xl:mt-36">
-        <SectionCarousel swipersData={swipersData} />
+        {swipersData?.length >= 1 && (
+          <SectionCarousel swipersData={swipersData} />
+        )}
         {/* <SectionBanners /> */}
         <SectionCategories />
       </div>
