@@ -18,7 +18,7 @@ const SectionSideMenu = ({ setIsOpen, isOpen }) => {
         <i className="material-icons text-lg">menu</i>
       </button>
       <div className="flex flex-col items-center p-5 h-full justify-around">
-        <div className="flex flex-col items-center justify-center gap-y-1 ">
+        <div className="flex flex-col items-center justify-center gap-y-3 mb-5 ">
           <div className="rounded-full border bg-white p-1 flex justify-center items-center">
             <i className="material-icons text-6xl text-gray-500">
               account_circle
@@ -28,7 +28,7 @@ const SectionSideMenu = ({ setIsOpen, isOpen }) => {
             {userInfo.full_name}
           </h3>
         </div>
-        <div className="flex flex-col items-center justify-center gap-y-3 ">
+        <div className="flex flex-col items-center justify-center gap-y-5 mb-14">
           <NavLink
             to="/user/profile"
             className="flex items-center gap-x-2 text-gray-500"

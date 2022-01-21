@@ -11,9 +11,9 @@ const PageUser = () => {
   const loc = useLocation();
 
   return (
-    <div className="w-screen h-screen">
-      <Header noMarginBottom={true} />
-      <div className="mt-44 lg:mt-48 xl:mt-36">
+    <div className="w-screen h-screen overflow-x-hidden">
+      <Header />
+      <div className="container mx-auto pt-5 lg:px-20 mt-44 lg:mt-48 xl:mt-36">
         <div className="flex w-full" style={{ height: "82%" }}>
           <SectionSideMenu setIsOpen={setIsOpen} isOpen={isOpen} />
           <div
